@@ -19,6 +19,16 @@ Discord 收到的是文字訊息裡的圖片連結,而不是被限制的附件�
 
 預設**只在你自己加入清單的頻道 / 伺服器**生效,Discord 其他地方維持原本行為,不會被這個工具影響。
 
+## 畫面預覽
+
+| 攔截範圍(工具列彈出視窗) | 上傳前確認視窗 |
+| :---: | :---: |
+| ![攔截範圍](docs/screenshots/popup.png) | ![確認視窗](docs/screenshots/modal.png) |
+
+**選項頁:模式切換、清單管理、用網址手動加入**
+
+![選項頁](docs/screenshots/options.png)
+
 ## 安裝(Chrome / Edge)
 
 1. 開啟 `chrome://extensions`(Edge 是 `edge://extensions`)
