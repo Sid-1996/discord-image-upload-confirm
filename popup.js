@@ -19,8 +19,8 @@ function parseDiscordUrl(url) {
   }
 }
 
-const cleanTitle = (t = "") =>
-  t.replace(/^\(\d+\)\s*/, "").replace(/\s*-\s*Discord$/, "").trim() || "(未命名)";
+const cleanTitle = (title = "") =>
+  title.replace(/^\(\d+\)\s*/, "").replace(/\s*-\s*Discord$/, "").trim() || t("unnamed");
 
 // 與 content.js 的判斷邏輯相同
 function matches(scope, loc) {
@@ -72,24 +72,32 @@ function render() {
   $("page").textContent = label;
   const on = matches(scope, loc);
   if (on) {
-    $("status").textContent = "✓ 這個頁面會攔截圖片(貼上時先確認)";
+    $("status").textContent = t("statusBlocked");
   } else if (scope.mode === "list" && scope.rules.length === 0) {
-    $("status").textContent = "✗ 清單是空的,目前不會攔截任何地方;請用下面的按鈕加入這個頻道";
+    $("status").textContent = t("statusEmpty");
   } else {
-    $("status").textContent = "✗ 這個頁面不會攔截,Discord 照常處理";
+    $("status").textContent = t("statusNotBlocked");
   }
   $("status").className = "status " + (on ? "on" : "off");
 
   if (loc.channelId) {
-    setButton($("btnChannel"), "channel", loc.channelId, "將此頻道加入清單", "從清單移除此頻道");
+    setButton($("btnChannel"), "channel", loc.channelId, t("addChannel"), t("removeChannel"));
   } else {
     $("btnChannel").classList.add("hidden");
   }
-  const guildName = loc.guildId === "@me" ? "所有私訊" : "整個伺服器";
-  setButton($("btnGuild"), "guild", loc.guildId, `將${guildName}加入清單`, `從清單移除${guildName}`);
+  const guildName = t(loc.guildId === "@me" ? "allDMs" : "wholeGuild");
+  setButton(
+    $("btnGuild"),
+    "guild",
+    loc.guildId,
+    t("addGuildNamed", [guildName]),
+    t("removeGuildNamed", [guildName])
+  );
 }
 
 (async () => {
+  i18n.applyI18n();
+
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
   loc = tab?.url ? parseDiscordUrl(tab.url) : null;
   label = cleanTitle(tab?.title);

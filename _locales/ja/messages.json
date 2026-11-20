@@ -1,0 +1,350 @@
+{
+  "extName": {
+    "message": "Discord 画像アップロード（確認必須）"
+  },
+  "extDesc": {
+    "message": "指定した Discord のチャンネルまたはサーバーで画像を貼り付け・ドラッグしたときに確認ダイアログを表示し、確認後に Uguu / ImgLink へアップロードして画像 URL を挿入します。"
+  },
+  "actionTitle": {
+    "message": "Discord 画像アップロード: 対象範囲"
+  },
+  "popupTitle": {
+    "message": "対象範囲"
+  },
+  "popupHeading": {
+    "message": "画像の対象範囲"
+  },
+  "modeList": {
+    "message": "下のリストにあるチャンネル / サーバーのみ対象"
+  },
+  "modeAll": {
+    "message": "Discord 全体を対象にする"
+  },
+  "modeOff": {
+    "message": "すべて無効（Discord は通常どおり動作）"
+  },
+  "modeHint": {
+    "message": "現在「リストのみ」モードではないため、リストは適用されません。"
+  },
+  "notDiscord": {
+    "message": "現在のチャンネルをリストに追加するには、Discord のタブでこのウィンドウを開いてください。"
+  },
+  "threadHint": {
+    "message": "スレッドとフォーラム投稿には固有の ID があり、「チャンネル」ルールには含まれません。制限されているサーバーは「サーバー全体」を追加してください。"
+  },
+  "openOptions": {
+    "message": "リストとアップロード設定を管理…"
+  },
+  "unnamed": {
+    "message": "(名称未設定)"
+  },
+  "statusBlocked": {
+    "message": "✓ このページの画像は対象です（貼り付け時に確認）"
+  },
+  "statusEmpty": {
+    "message": "✗ リストが空のため、現在どこも対象ではありません。下のボタンでこのチャンネルを追加してください"
+  },
+  "statusNotBlocked": {
+    "message": "✗ このページの画像は対象外で、Discord が通常どおり処理します"
+  },
+  "addChannel": {
+    "message": "このチャンネルをリストに追加"
+  },
+  "removeChannel": {
+    "message": "このチャンネルをリストから削除"
+  },
+  "allDMs": {
+    "message": "すべての DM"
+  },
+  "wholeGuild": {
+    "message": "サーバー全体"
+  },
+  "addGuildNamed": {
+    "message": "$name$をリストに追加",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "name"
+      }
+    }
+  },
+  "removeGuildNamed": {
+    "message": "$name$をリストから削除",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "name"
+      }
+    }
+  },
+  "optionsTitle": {
+    "message": "Discord 画像アップロード - オプション"
+  },
+  "beforeYouKnow": {
+    "message": "はじめる前に"
+  },
+  "warnUpload": {
+    "message": "画像は Discord ではなく<strong>サードパーティの画像ホスト</strong>にアップロードされます。本拡張はこれらのサービスと一切関係ありません。"
+  },
+  "warnPublic": {
+    "message": "画像の URL を知っている人は誰でも画像を見られます。見せたくないものはアップロードしないでください。"
+  },
+  "warnCancel": {
+    "message": "アップロードのたびに確認ダイアログが表示され、「キャンセル」を押すと何もアップロードされません。"
+  },
+  "scopeHeading": {
+    "message": "対象範囲"
+  },
+  "scopeDesc": {
+    "message": "指定したチャンネルやサーバーで画像を貼り付け・ドラッグしたときだけ対象となり、それ以外は Discord が通常どおり動作します。"
+  },
+  "modeLabel": {
+    "message": "モード"
+  },
+  "modeListSuggested": {
+    "message": "下のリストにあるチャンネル / サーバーのみ対象（推奨）"
+  },
+  "modeOffShort": {
+    "message": "すべて無効"
+  },
+  "emptyRules": {
+    "message": "リストが空です。Discord のページでツールバーの拡張アイコンを押すと、現在のチャンネルやサーバーを追加できます。"
+  },
+  "addByUrlLabel": {
+    "message": "URL で手動追加"
+  },
+  "urlPlaceholder": {
+    "message": "https://discord.com/channels/サーバーID/チャンネルID"
+  },
+  "addChannelShort": {
+    "message": "このチャンネルを追加"
+  },
+  "addGuildShort": {
+    "message": "サーバー全体を追加"
+  },
+  "urlHint": {
+    "message": "Discord のアドレスバーから現在のチャンネルの URL をコピーして貼り付けてください。DM の URL は <code>/channels/@me/…</code> で、「サーバー全体」を追加するとすべての DM が対象になります。<br />スレッドとフォーラム投稿には固有の ID があり、「チャンネル」ルールには含まれません。制限されているサーバーは「サーバー全体」を追加してください。"
+  },
+  "uguuHeading": {
+    "message": "画像ソース 1: Uguu（アカウント不要）"
+  },
+  "uguuAnon": {
+    "message": "匿名アップロードで、登録や設定は不要です。"
+  },
+  "uguuTemp": {
+    "message": "ファイルは<strong>一時保存</strong>され、保存期間は Uguu が決めます。期限切れになると Discord の画像が表示されなくなります。"
+  },
+  "officialSite": {
+    "message": "公式サイト:"
+  },
+  "imglinkHeading": {
+    "message": "画像ソース 2: ImgLink（要登録）"
+  },
+  "imglinkIntro": {
+    "message": "ImgLink の API アップロードには API Key が必要です。先に<strong>アカウントを登録</strong>してキーを作成してください:"
+  },
+  "imglinkStep1": {
+    "message": "公式サイトで無料アカウントを登録:"
+  },
+  "imglinkStep2": {
+    "message": "ログイン後、ダッシュボードの <strong>API Keys</strong> セクションで <strong>Generate New Key</strong> を押してキーを作成:"
+  },
+  "imglinkStep3": {
+    "message": "下の欄にキーを貼り付けて保存してください。"
+  },
+  "privacyHeading": {
+    "message": "プライバシーについて（URL を知る人だけが見られます）"
+  },
+  "privacyPrivate": {
+    "message": "ImgLink の画像は「非公開（private）」に設定できます。公式ドキュメントによると、非公開画像は URL 経由でのみアクセスでき、検索されたり公開ページに表示されたりしません。"
+  },
+  "privacyDefault": {
+    "message": "画像は既定で<strong>公開</strong>されている場合があります。本拡張では<strong>非公開に設定できません</strong>。ImgLink のダッシュボードでご自身で設定してください（画面は公式サイトに準拠）。"
+  },
+  "privacyTest": {
+    "message": "非公開画像が Discord で正しく表示されるか、先に 1 枚テストしてください。"
+  },
+  "apiDocs": {
+    "message": "API ドキュメント:"
+  },
+  "apiKeyLabel": {
+    "message": "ImgLink API Key"
+  },
+  "apiKeyPlaceholder": {
+    "message": "API Key を貼り付けてください"
+  },
+  "keyHint": {
+    "message": "キーはこのブラウザの拡張ストレージにのみ保存され、バックグラウンドで使用されます。Discord ページには送信されず、ImgLink アップロード時のみ必要です。"
+  },
+  "save": {
+    "message": "保存"
+  },
+  "clearKey": {
+    "message": "キーを消去"
+  },
+  "savedKey": {
+    "message": "ImgLink API Key を保存しました"
+  },
+  "pasteKeyFirst": {
+    "message": "先に API Key を貼り付けてください"
+  },
+  "saved": {
+    "message": "保存しました"
+  },
+  "cleared": {
+    "message": "消去しました"
+  },
+  "noGuildId": {
+    "message": "サーバー ID が見つかりません"
+  },
+  "noChannelId": {
+    "message": "チャンネル ID が見つかりません"
+  },
+  "guildExists": {
+    "message": "このサーバーはすでにリストにあります"
+  },
+  "channelExists": {
+    "message": "このチャンネルはすでにリストにあります"
+  },
+  "removed": {
+    "message": "削除しました"
+  },
+  "added": {
+    "message": "リストに追加しました"
+  },
+  "badUrl": {
+    "message": "URL を認識できません。https://discord.com/channels/… のような URL を貼り付けてください。"
+  },
+  "noChannelInUrl": {
+    "message": "この URL にはサーバーしかなくチャンネルがありません。「サーバー全体を追加」を使用してください。"
+  },
+  "guildNamed": {
+    "message": "サーバー $id$",
+    "placeholders": {
+      "id": {
+        "content": "$1",
+        "example": "name"
+      }
+    }
+  },
+  "channelNamed": {
+    "message": "チャンネル $id$",
+    "placeholders": {
+      "id": {
+        "content": "$1",
+        "example": "name"
+      }
+    }
+  },
+  "tagChannel": {
+    "message": "チャンネル"
+  },
+  "tagDM": {
+    "message": "DM"
+  },
+  "tagGuild": {
+    "message": "サーバー"
+  },
+  "remove": {
+    "message": "削除"
+  },
+  "readFileFailed": {
+    "message": "ファイルの読み取りに失敗しました"
+  },
+  "hintImglink": {
+    "message": "ImgLink はアカウント登録と API Key の作成が必要で、拡張の「オプション」ページに貼り付けてください。画像は既定で公開されている場合があるため、ImgLink のダッシュボードで非公開に設定してください（URL を知る人だけが見られます）。公式サイト:"
+  },
+  "register": {
+    "message": "登録"
+  },
+  "dashboard": {
+    "message": "ダッシュボード"
+  },
+  "hintUguu": {
+    "message": "Uguu はアカウント不要で、ファイルは一時保存され、保存期間は Uguu が決めます。URL を知る人は誰でも見られます。公式サイト:"
+  },
+  "optUguu": {
+    "message": "Uguu（一時保存、期間は Uguu が決定）"
+  },
+  "optImglink": {
+    "message": "ImgLink（API Key が必要、拡張のオプションを参照）"
+  },
+  "cancelUpload": {
+    "message": "キャンセル（アップロードしない）"
+  },
+  "modalTitle": {
+    "message": "画像をアップロードしますか？"
+  },
+  "modalWarn": {
+    "message": "画像は選択したサードパーティの画像ホストにアップロードされ、リンクを知る人は誰でも見られます。チェックを外すか「キャンセル」を押すと何もアップロードされません。"
+  },
+  "uploadTo": {
+    "message": "アップロード先:"
+  },
+  "uploadSelected": {
+    "message": "選択した $count$ 件をアップロード",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "retrySelected": {
+    "message": "選択した $count$ 件を再試行",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "defaultImageName": {
+    "message": "image"
+  },
+  "uploading": {
+    "message": "アップロード中…"
+  },
+  "fileTooLarge": {
+    "message": "ファイルが 200MB を超えています"
+  },
+  "unknownError": {
+    "message": "不明なエラー"
+  },
+  "uploaded": {
+    "message": "✓ アップロード済み"
+  },
+  "insertFailed": {
+    "message": "入力欄が見つからないか挿入に失敗しました。URL をクリップボードにコピーしましたので手動で貼り付けてください（Ctrl+V）。"
+  },
+  "uploadTimeout": {
+    "message": "アップロードがタイムアウトしました"
+  },
+  "needImglinkKey": {
+    "message": "先に拡張の「オプション」ページで ImgLink API Key を入力してください"
+  },
+  "imageOnly": {
+    "message": "画像ファイルのみ対応しています"
+  },
+  "unknownTarget": {
+    "message": "不明なアップロード先です"
+  },
+  "aboutHeading": {
+    "message": "作者について・寄付"
+  },
+  "authorLabel": {
+    "message": "作者:"
+  },
+  "sponsorDesc": {
+    "message": "このツールが役に立ったら、少額の寄付で開発を応援してください。"
+  },
+  "sponsorEcpay": {
+    "message": "寄付 (ECPAY)"
+  },
+  "sponsorPaypal": {
+    "message": "寄付 (PayPal)"
+  },
+  "popupAuthor": {
+    "message": "作者 Sid-1996"
+  }
+}

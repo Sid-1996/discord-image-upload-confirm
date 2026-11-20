@@ -1,0 +1,350 @@
+{
+  "extName": {
+    "message": "Discord 圖片上傳(需確認)"
+  },
+  "extDesc": {
+    "message": "只在你指定的 Discord 頻道或伺服器中,貼上或拖曳圖片時先跳出確認視窗,確認後才上傳到 Uguu / ImgLink 並插入圖片網址。"
+  },
+  "actionTitle": {
+    "message": "Discord 圖片上傳:攔截範圍"
+  },
+  "popupTitle": {
+    "message": "攔截範圍"
+  },
+  "popupHeading": {
+    "message": "圖片攔截範圍"
+  },
+  "modeList": {
+    "message": "只在下方清單中的頻道 / 伺服器攔截"
+  },
+  "modeAll": {
+    "message": "整個 Discord 都攔截"
+  },
+  "modeOff": {
+    "message": "全部停用(Discord 照常運作)"
+  },
+  "modeHint": {
+    "message": "目前不是「只在清單中」模式,清單暫時不生效。"
+  },
+  "notDiscord": {
+    "message": "請在 Discord 網頁版的分頁中開啟這個視窗,才能把目前的頻道加入清單。"
+  },
+  "threadHint": {
+    "message": "討論串與論壇貼文有自己的 ID,不會被「頻道」規則涵蓋;被限制的伺服器建議直接加入「整個伺服器」。"
+  },
+  "openOptions": {
+    "message": "管理清單與上傳設定…"
+  },
+  "unnamed": {
+    "message": "(未命名)"
+  },
+  "statusBlocked": {
+    "message": "✓ 這個頁面會攔截圖片(貼上時先確認)"
+  },
+  "statusEmpty": {
+    "message": "✗ 清單是空的,目前不會攔截任何地方;請用下面的按鈕加入這個頻道"
+  },
+  "statusNotBlocked": {
+    "message": "✗ 這個頁面不會攔截,Discord 照常處理"
+  },
+  "addChannel": {
+    "message": "將此頻道加入清單"
+  },
+  "removeChannel": {
+    "message": "從清單移除此頻道"
+  },
+  "allDMs": {
+    "message": "所有私訊"
+  },
+  "wholeGuild": {
+    "message": "整個伺服器"
+  },
+  "addGuildNamed": {
+    "message": "將$name$加入清單",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "name"
+      }
+    }
+  },
+  "removeGuildNamed": {
+    "message": "從清單移除$name$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "name"
+      }
+    }
+  },
+  "optionsTitle": {
+    "message": "Discord 圖片上傳 - 選項"
+  },
+  "beforeYouKnow": {
+    "message": "使用前請先知道"
+  },
+  "warnUpload": {
+    "message": "圖片會被上傳到<strong>第三方圖床</strong>,不是 Discord。本擴充與這些服務沒有任何關係。"
+  },
+  "warnPublic": {
+    "message": "任何人只要拿到圖片網址就能看到圖片,請不要上傳不想讓別人看到的內容。"
+  },
+  "warnCancel": {
+    "message": "每次上傳前都會跳出確認視窗,按「取消」不會上傳任何東西。"
+  },
+  "scopeHeading": {
+    "message": "攔截範圍"
+  },
+  "scopeDesc": {
+    "message": "只有在你指定的頻道或伺服器裡,貼上或拖曳圖片才會被攔截;其他地方 Discord 照常運作。"
+  },
+  "modeLabel": {
+    "message": "模式"
+  },
+  "modeListSuggested": {
+    "message": "只在下方清單中的頻道 / 伺服器攔截(建議)"
+  },
+  "modeOffShort": {
+    "message": "全部停用"
+  },
+  "emptyRules": {
+    "message": "清單是空的。到 Discord 頁面點工具列上的擴充圖示,就能把目前的頻道或伺服器加入清單。"
+  },
+  "addByUrlLabel": {
+    "message": "用網址手動加入"
+  },
+  "urlPlaceholder": {
+    "message": "https://discord.com/channels/伺服器ID/頻道ID"
+  },
+  "addChannelShort": {
+    "message": "加入此頻道"
+  },
+  "addGuildShort": {
+    "message": "加入整個伺服器"
+  },
+  "urlHint": {
+    "message": "在 Discord 網頁版的網址列複製目前頻道的網址貼上即可。私訊的網址是 <code>/channels/@me/…</code>,加入「整個伺服器」代表所有私訊。<br />討論串與論壇貼文有自己的 ID,不會被「頻道」規則涵蓋;被限制的伺服器建議直接加入「整個伺服器」。"
+  },
+  "uguuHeading": {
+    "message": "圖源 1:Uguu(不需要帳號)"
+  },
+  "uguuAnon": {
+    "message": "匿名上傳,不需要註冊,也不用設定。"
+  },
+  "uguuTemp": {
+    "message": "檔案是<strong>臨時保存</strong>,多久刪除由 Uguu 決定,到期後 Discord 裡的圖片會失效。"
+  },
+  "officialSite": {
+    "message": "官網:"
+  },
+  "imglinkHeading": {
+    "message": "圖源 2:ImgLink(需要自己註冊)"
+  },
+  "imglinkIntro": {
+    "message": "ImgLink 的 API 上傳需要 API Key,請<strong>自行註冊帳號</strong>後建立:"
+  },
+  "imglinkStep1": {
+    "message": "到官網註冊免費帳號:"
+  },
+  "imglinkStep2": {
+    "message": "登入後到後台(Dashboard)的 <strong>API Keys</strong> 區塊,按 <strong>Generate New Key</strong> 建立金鑰:"
+  },
+  "imglinkStep3": {
+    "message": "把金鑰貼在下面的欄位並儲存。"
+  },
+  "privacyHeading": {
+    "message": "關於隱私(只有知道網址的人看得到)"
+  },
+  "privacyPrivate": {
+    "message": "ImgLink 的圖片可設為「私密(private)」。依官方說明,私密圖片只能透過網址存取,不會被搜尋或出現在公開頁面。"
+  },
+  "privacyDefault": {
+    "message": "圖片預設可能是<strong>公開</strong>的。本擴充<strong>無法替你設定私密</strong>,請在 ImgLink 的帳號後台自行把圖片設為私密(介面以官網為準)。"
+  },
+  "privacyTest": {
+    "message": "私密圖片能不能在 Discord 正常顯示預覽,請先自己測試一張。"
+  },
+  "apiDocs": {
+    "message": "API 文件:"
+  },
+  "apiKeyLabel": {
+    "message": "ImgLink API Key"
+  },
+  "apiKeyPlaceholder": {
+    "message": "貼上你的 API Key"
+  },
+  "keyHint": {
+    "message": "金鑰只存在這個瀏覽器的擴充儲存空間,由背景程式使用,不會傳給 Discord 頁面。只有選擇 ImgLink 上傳時才需要。"
+  },
+  "save": {
+    "message": "儲存"
+  },
+  "clearKey": {
+    "message": "清除 Key"
+  },
+  "savedKey": {
+    "message": "已儲存 ImgLink API Key"
+  },
+  "pasteKeyFirst": {
+    "message": "請先貼上 API Key"
+  },
+  "saved": {
+    "message": "已儲存"
+  },
+  "cleared": {
+    "message": "已清除"
+  },
+  "noGuildId": {
+    "message": "找不到伺服器 ID"
+  },
+  "noChannelId": {
+    "message": "找不到頻道 ID"
+  },
+  "guildExists": {
+    "message": "這個伺服器已經在清單中"
+  },
+  "channelExists": {
+    "message": "這個頻道已經在清單中"
+  },
+  "removed": {
+    "message": "已移除"
+  },
+  "added": {
+    "message": "已加入清單"
+  },
+  "badUrl": {
+    "message": "無法辨識網址,請貼上 https://discord.com/channels/… 這樣的網址"
+  },
+  "noChannelInUrl": {
+    "message": "這個網址只有伺服器,沒有頻道;請改用「加入整個伺服器」"
+  },
+  "guildNamed": {
+    "message": "伺服器 $id$",
+    "placeholders": {
+      "id": {
+        "content": "$1",
+        "example": "name"
+      }
+    }
+  },
+  "channelNamed": {
+    "message": "頻道 $id$",
+    "placeholders": {
+      "id": {
+        "content": "$1",
+        "example": "name"
+      }
+    }
+  },
+  "tagChannel": {
+    "message": "頻道"
+  },
+  "tagDM": {
+    "message": "私訊"
+  },
+  "tagGuild": {
+    "message": "伺服器"
+  },
+  "remove": {
+    "message": "移除"
+  },
+  "readFileFailed": {
+    "message": "讀取檔案失敗"
+  },
+  "hintImglink": {
+    "message": "ImgLink 需要先自行註冊帳號,並建立 API Key 貼到擴充功能的「選項」頁。圖片預設可能是公開的,建議到 ImgLink 後台設為私密(只有知道網址的人看得到)。官網:"
+  },
+  "register": {
+    "message": "註冊"
+  },
+  "dashboard": {
+    "message": "後台"
+  },
+  "hintUguu": {
+    "message": "Uguu 不需要帳號,檔案為臨時保存,保存多久由 Uguu 決定;知道網址的人都能看到。官網:"
+  },
+  "optUguu": {
+    "message": "Uguu(臨時保存,時間由 Uguu 決定)"
+  },
+  "optImglink": {
+    "message": "ImgLink(需要 API Key,見擴充選項)"
+  },
+  "cancelUpload": {
+    "message": "取消(不上傳)"
+  },
+  "modalTitle": {
+    "message": "確認上傳圖片?"
+  },
+  "modalWarn": {
+    "message": "圖片會被上傳到你選擇的第三方圖床,取得連結的人都能看到。取消勾選或按「取消」就不會上傳任何東西。"
+  },
+  "uploadTo": {
+    "message": "上傳到:"
+  },
+  "uploadSelected": {
+    "message": "上傳選取的 $count$ 張",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "retrySelected": {
+    "message": "重試選取的 $count$ 張",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "defaultImageName": {
+    "message": "image"
+  },
+  "uploading": {
+    "message": "上傳中…"
+  },
+  "fileTooLarge": {
+    "message": "檔案超過 200MB"
+  },
+  "unknownError": {
+    "message": "未知錯誤"
+  },
+  "uploaded": {
+    "message": "✓ 已上傳"
+  },
+  "insertFailed": {
+    "message": "找不到輸入框或插入失敗,網址已複製到剪貼簿,請手動貼上(Ctrl+V)。"
+  },
+  "uploadTimeout": {
+    "message": "上傳逾時"
+  },
+  "needImglinkKey": {
+    "message": "請先到擴充功能的「選項」填入 ImgLink API Key"
+  },
+  "imageOnly": {
+    "message": "只接受圖片檔"
+  },
+  "unknownTarget": {
+    "message": "未知的上傳目標"
+  },
+  "aboutHeading": {
+    "message": "關於作者與贊助"
+  },
+  "authorLabel": {
+    "message": "作者:"
+  },
+  "sponsorDesc": {
+    "message": "如果這套工具對你有幫助,歡迎小額贊助支持後續開發。"
+  },
+  "sponsorEcpay": {
+    "message": "贊助(ECPAY)"
+  },
+  "sponsorPaypal": {
+    "message": "贊助(PayPal)"
+  },
+  "popupAuthor": {
+    "message": "作者 Sid-1996"
+  }
+}

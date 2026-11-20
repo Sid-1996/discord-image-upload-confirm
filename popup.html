@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8" />
-  <title>攔截範圍</title>
+  <title data-i18n="popupTitle">攔截範圍</title>
   <style>
     body { font-family: "Segoe UI", "Microsoft JhengHei", sans-serif; width: 340px; margin: 0; padding: 14px; color: #222; font-size: 14px; line-height: 1.5; }
     h1 { font-size: 15px; margin: 0 0 10px; }
@@ -16,19 +16,26 @@
     label { display: block; margin: 4px 0; cursor: pointer; }
     .hint { font-size: 12px; color: #666; margin-top: 6px; }
     .hidden { display: none; }
+    .about { display: flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 11px; color: #888; }
+    .about a { color: #888; text-decoration: none; }
+    .about a:hover { color: #1a5fd0; }
+    .about .sponsors { margin-left: auto; display: inline-flex; gap: 6px; }
+    .mini { display: inline-grid; place-items: center; width: 28px; height: 22px; border-radius: 6px; background: #fff0f3; }
+    .mini:hover { background: #ffe0e7; }
+    .heart { width: 16px; height: 16px; fill: #e0245e; display: block; }
   </style>
 </head>
 <body>
-  <h1>圖片攔截範圍</h1>
+  <h1 data-i18n="popupHeading">圖片攔截範圍</h1>
 
   <div class="box">
-    <label><input type="radio" name="mode" value="list" /> 只在下方清單中的頻道 / 伺服器攔截</label>
-    <label><input type="radio" name="mode" value="all" /> 整個 Discord 都攔截</label>
-    <label><input type="radio" name="mode" value="off" /> 全部停用(Discord 照常運作)</label>
-    <div class="hint hidden" id="modeHint">目前不是「只在清單中」模式,清單暫時不生效。</div>
+    <label><input type="radio" name="mode" value="list" /> <span data-i18n="modeList">只在下方清單中的頻道 / 伺服器攔截</span></label>
+    <label><input type="radio" name="mode" value="all" /> <span data-i18n="modeAll">整個 Discord 都攔截</span></label>
+    <label><input type="radio" name="mode" value="off" /> <span data-i18n="modeOff">全部停用(Discord 照常運作)</span></label>
+    <div class="hint hidden" id="modeHint" data-i18n="modeHint">目前不是「只在清單中」模式,清單暫時不生效。</div>
   </div>
 
-  <div class="box hidden" id="notDiscord">
+  <div class="box hidden" id="notDiscord" data-i18n="notDiscord">
     請在 Discord 網頁版的分頁中開啟這個視窗,才能把目前的頻道加入清單。
   </div>
 
@@ -37,11 +44,20 @@
     <div class="status" id="status"></div>
     <button id="btnChannel" class="hidden"></button>
     <button id="btnGuild" class="hidden"></button>
-    <div class="hint">討論串與論壇貼文有自己的 ID,不會被「頻道」規則涵蓋;被限制的伺服器建議直接加入「整個伺服器」。</div>
+    <div class="hint" data-i18n="threadHint">討論串與論壇貼文有自己的 ID,不會被「頻道」規則涵蓋;被限制的伺服器建議直接加入「整個伺服器」。</div>
   </div>
 
-  <button class="link" id="openOptions">管理清單與上傳設定…</button>
+  <button class="link" id="openOptions" data-i18n="openOptions">管理清單與上傳設定…</button>
 
+  <div class="about">
+    <a href="https://github.com/Sid-1996" target="_blank" rel="noopener noreferrer" data-i18n="popupAuthor">作者 Sid-1996</a>
+    <span class="sponsors">
+      <a href="https://p.ecpay.com.tw/E0E3A" target="_blank" rel="noopener noreferrer" title="ECPAY" aria-label="ECPAY"><span class="mini"><svg class="heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span></a>
+      <a href="https://www.paypal.com/ncp/payment/GJS4D5VTSVWG4" target="_blank" rel="noopener noreferrer" title="PayPal" aria-label="PayPal"><span class="mini"><svg class="heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span></a>
+    </span>
+  </div>
+
+  <script src="i18n.js"></script>
   <script src="popup.js"></script>
 </body>
 </html>

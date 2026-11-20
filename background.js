@@ -1,6 +1,8 @@
 // background service worker:負責實際上傳(避開網頁的 CORS 限制)
 // 支援:uguu / imglink
 
+importScripts("i18n.js");
+
 const TIMEOUT_MS = 120000;
 const HISTORY_LIMIT = 200;
 
@@ -17,7 +19,7 @@ async function fetchWithTimeout(url, options) {
     const text = (await r.text()).trim();
     return { r, text };
   } catch (e) {
-    if (e.name === "AbortError") throw new Error("上傳逾時");
+    if (e.name === "AbortError") throw new Error(t("uploadTimeout"));
     throw e;
   } finally {
     clearTimeout(timer);
@@ -46,7 +48,7 @@ async function uploadUguu(blob, name) {
 
 async function uploadImglink(blob, name) {
   const { imglinkKey } = await chrome.storage.local.get("imglinkKey");
-  if (!imglinkKey) throw new Error("請先到擴充功能的「選項」填入 ImgLink API Key");
+  if (!imglinkKey) throw new Error(t("needImglinkKey"));
 
   const form = new FormData();
   form.append("file", blob, name);
@@ -83,9 +85,9 @@ async function saveHistory(entry) {
 
 async function upload({ dataUrl, name, target }) {
   if (typeof dataUrl !== "string" || !dataUrl.startsWith("data:image/")) {
-    throw new Error("只接受圖片檔");
+    throw new Error(t("imageOnly"));
   }
-  if (!ENDPOINTS[target]) throw new Error("未知的上傳目標");
+  if (!ENDPOINTS[target]) throw new Error(t("unknownTarget"));
 
   const blob = await (await fetch(dataUrl)).blob();
   const fileName = name || "image.png";

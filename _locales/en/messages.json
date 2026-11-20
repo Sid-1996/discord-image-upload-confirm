@@ -1,0 +1,350 @@
+{
+  "extName": {
+    "message": "Discord Image Upload (Confirm Required)"
+  },
+  "extDesc": {
+    "message": "Only when pasting or dropping images in the Discord channels or servers you specify, a confirmation dialog appears first; after confirming, the image is uploaded to Uguu / ImgLink and the URL is inserted."
+  },
+  "actionTitle": {
+    "message": "Discord Image Upload: Intercept Scope"
+  },
+  "popupTitle": {
+    "message": "Intercept Scope"
+  },
+  "popupHeading": {
+    "message": "Image Intercept Scope"
+  },
+  "modeList": {
+    "message": "Intercept only in channels / servers in the list below"
+  },
+  "modeAll": {
+    "message": "Intercept across all of Discord"
+  },
+  "modeOff": {
+    "message": "Disable entirely (Discord works as normal)"
+  },
+  "modeHint": {
+    "message": "Not in \"list only\" mode right now; the list has no effect."
+  },
+  "notDiscord": {
+    "message": "Open this window from a Discord web tab to add the current channel to the list."
+  },
+  "threadHint": {
+    "message": "Threads and forum posts have their own IDs and are not covered by \"channel\" rules; for restricted servers, add the whole server instead."
+  },
+  "openOptions": {
+    "message": "Manage list & upload settings…"
+  },
+  "unnamed": {
+    "message": "(unnamed)"
+  },
+  "statusBlocked": {
+    "message": "✓ Images on this page will be intercepted (confirm on paste)"
+  },
+  "statusEmpty": {
+    "message": "✗ The list is empty, nothing is intercepted right now; use the button below to add this channel"
+  },
+  "statusNotBlocked": {
+    "message": "✗ Images on this page are not intercepted; Discord handles them as normal"
+  },
+  "addChannel": {
+    "message": "Add this channel to the list"
+  },
+  "removeChannel": {
+    "message": "Remove this channel from the list"
+  },
+  "allDMs": {
+    "message": "all DMs"
+  },
+  "wholeGuild": {
+    "message": "the whole server"
+  },
+  "addGuildNamed": {
+    "message": "Add $name$ to the list",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "name"
+      }
+    }
+  },
+  "removeGuildNamed": {
+    "message": "Remove $name$ from the list",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "name"
+      }
+    }
+  },
+  "optionsTitle": {
+    "message": "Discord Image Upload - Options"
+  },
+  "beforeYouKnow": {
+    "message": "Before you start"
+  },
+  "warnUpload": {
+    "message": "Images are uploaded to a <strong>third-party image host</strong>, not Discord. This extension is not affiliated with these services."
+  },
+  "warnPublic": {
+    "message": "Anyone with the image URL can see the image. Do not upload anything you don't want others to see."
+  },
+  "warnCancel": {
+    "message": "A confirmation dialog appears before every upload; clicking \"Cancel\" uploads nothing."
+  },
+  "scopeHeading": {
+    "message": "Intercept Scope"
+  },
+  "scopeDesc": {
+    "message": "Only pasting or dropping images in the channels or servers you specify will be intercepted; everywhere else Discord works as normal."
+  },
+  "modeLabel": {
+    "message": "Mode"
+  },
+  "modeListSuggested": {
+    "message": "Intercept only in channels / servers in the list below (recommended)"
+  },
+  "modeOffShort": {
+    "message": "Disable entirely"
+  },
+  "emptyRules": {
+    "message": "The list is empty. Open the extension icon on a Discord page to add the current channel or server."
+  },
+  "addByUrlLabel": {
+    "message": "Add manually by URL"
+  },
+  "urlPlaceholder": {
+    "message": "https://discord.com/channels/serverID/channelID"
+  },
+  "addChannelShort": {
+    "message": "Add this channel"
+  },
+  "addGuildShort": {
+    "message": "Add whole server"
+  },
+  "urlHint": {
+    "message": "Copy the current channel URL from Discord's address bar and paste it here. DM URLs look like <code>/channels/@me/…</code>; adding \"whole server\" covers all DMs.<br />Threads and forum posts have their own IDs and are not covered by \"channel\" rules; for restricted servers, add the whole server instead."
+  },
+  "uguuHeading": {
+    "message": "Host 1: Uguu (no account needed)"
+  },
+  "uguuAnon": {
+    "message": "Anonymous upload; no registration or setup required."
+  },
+  "uguuTemp": {
+    "message": "Files are stored <strong>temporarily</strong>; how long they last is up to Uguu. Images in Discord will expire when they are deleted."
+  },
+  "officialSite": {
+    "message": "Website:"
+  },
+  "imglinkHeading": {
+    "message": "Host 2: ImgLink (registration required)"
+  },
+  "imglinkIntro": {
+    "message": "ImgLink's API upload requires an API Key. Please <strong>register an account</strong> and create one first:"
+  },
+  "imglinkStep1": {
+    "message": "Register a free account on the website:"
+  },
+  "imglinkStep2": {
+    "message": "After logging in, go to the <strong>API Keys</strong> section of the Dashboard and click <strong>Generate New Key</strong>:"
+  },
+  "imglinkStep3": {
+    "message": "Paste the key into the field below and save."
+  },
+  "privacyHeading": {
+    "message": "About privacy (only people with the URL can see it)"
+  },
+  "privacyPrivate": {
+    "message": "ImgLink images can be set to \"private\". According to the official docs, private images are only accessible by URL and are not searchable or shown on public pages."
+  },
+  "privacyDefault": {
+    "message": "Images may be <strong>public</strong> by default. This extension <strong>cannot set them to private for you</strong>; please do so in your ImgLink dashboard (see the official site for the current UI)."
+  },
+  "privacyTest": {
+    "message": "Please test one image first to see whether private images display correctly in Discord."
+  },
+  "apiDocs": {
+    "message": "API docs:"
+  },
+  "apiKeyLabel": {
+    "message": "ImgLink API Key"
+  },
+  "apiKeyPlaceholder": {
+    "message": "Paste your API Key"
+  },
+  "keyHint": {
+    "message": "The key is stored only in this browser's extension storage and used by the background script; it is never sent to the Discord page. Only needed when uploading with ImgLink."
+  },
+  "save": {
+    "message": "Save"
+  },
+  "clearKey": {
+    "message": "Clear Key"
+  },
+  "savedKey": {
+    "message": "ImgLink API Key saved"
+  },
+  "pasteKeyFirst": {
+    "message": "Please paste an API Key first"
+  },
+  "saved": {
+    "message": "Saved"
+  },
+  "cleared": {
+    "message": "Cleared"
+  },
+  "noGuildId": {
+    "message": "Server ID not found"
+  },
+  "noChannelId": {
+    "message": "Channel ID not found"
+  },
+  "guildExists": {
+    "message": "This server is already in the list"
+  },
+  "channelExists": {
+    "message": "This channel is already in the list"
+  },
+  "removed": {
+    "message": "Removed"
+  },
+  "added": {
+    "message": "Added to the list"
+  },
+  "badUrl": {
+    "message": "Unrecognized URL, please paste a link like https://discord.com/channels/…"
+  },
+  "noChannelInUrl": {
+    "message": "This URL only has a server, no channel; please use \"Add whole server\" instead"
+  },
+  "guildNamed": {
+    "message": "Server $id$",
+    "placeholders": {
+      "id": {
+        "content": "$1",
+        "example": "name"
+      }
+    }
+  },
+  "channelNamed": {
+    "message": "Channel $id$",
+    "placeholders": {
+      "id": {
+        "content": "$1",
+        "example": "name"
+      }
+    }
+  },
+  "tagChannel": {
+    "message": "Channel"
+  },
+  "tagDM": {
+    "message": "DM"
+  },
+  "tagGuild": {
+    "message": "Server"
+  },
+  "remove": {
+    "message": "Remove"
+  },
+  "readFileFailed": {
+    "message": "Failed to read file"
+  },
+  "hintImglink": {
+    "message": "ImgLink requires you to register an account and create an API Key in the extension's \"Options\" page. Images may be public by default; set them to private in your ImgLink dashboard (only people with the URL can see them). Website:"
+  },
+  "register": {
+    "message": "Register"
+  },
+  "dashboard": {
+    "message": "Dashboard"
+  },
+  "hintUguu": {
+    "message": "Uguu needs no account; files are stored temporarily and how long they last is up to Uguu. Anyone with the URL can see them. Website:"
+  },
+  "optUguu": {
+    "message": "Uguu (temporary storage, duration set by Uguu)"
+  },
+  "optImglink": {
+    "message": "ImgLink (API Key needed, see extension options)"
+  },
+  "cancelUpload": {
+    "message": "Cancel (don't upload)"
+  },
+  "modalTitle": {
+    "message": "Upload these images?"
+  },
+  "modalWarn": {
+    "message": "Images will be uploaded to the third-party host you choose; anyone with the link can see them. Uncheck them or press \"Cancel\" and nothing will be uploaded."
+  },
+  "uploadTo": {
+    "message": "Upload to:"
+  },
+  "uploadSelected": {
+    "message": "Upload $count$ selected",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "retrySelected": {
+    "message": "Retry $count$ selected",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "defaultImageName": {
+    "message": "image"
+  },
+  "uploading": {
+    "message": "Uploading…"
+  },
+  "fileTooLarge": {
+    "message": "File exceeds 200MB"
+  },
+  "unknownError": {
+    "message": "Unknown error"
+  },
+  "uploaded": {
+    "message": "✓ Uploaded"
+  },
+  "insertFailed": {
+    "message": "Couldn't find the input box or failed to insert; the URL was copied to your clipboard, please paste it manually (Ctrl+V)."
+  },
+  "uploadTimeout": {
+    "message": "Upload timed out"
+  },
+  "needImglinkKey": {
+    "message": "Please enter your ImgLink API Key in the extension's \"Options\" page first"
+  },
+  "imageOnly": {
+    "message": "Images only"
+  },
+  "unknownTarget": {
+    "message": "Unknown upload target"
+  },
+  "aboutHeading": {
+    "message": "About & Support"
+  },
+  "authorLabel": {
+    "message": "Author:"
+  },
+  "sponsorDesc": {
+    "message": "If this tool helps you, feel free to support its development with a small donation."
+  },
+  "sponsorEcpay": {
+    "message": "Donate (ECPAY)"
+  },
+  "sponsorPaypal": {
+    "message": "Donate (PayPal)"
+  },
+  "popupAuthor": {
+    "message": "by Sid-1996"
+  }
+}

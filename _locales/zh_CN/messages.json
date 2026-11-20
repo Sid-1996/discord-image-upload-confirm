@@ -1,0 +1,350 @@
+{
+  "extName": {
+    "message": "Discord 图片上传(需确认)"
+  },
+  "extDesc": {
+    "message": "只在你指定的 Discord 频道或服务器中,粘贴或拖曳图片时先弹出确认窗口,确认后才上传到 Uguu / ImgLink 并插入图片网址。"
+  },
+  "actionTitle": {
+    "message": "Discord 图片上传:拦截范围"
+  },
+  "popupTitle": {
+    "message": "拦截范围"
+  },
+  "popupHeading": {
+    "message": "图片拦截范围"
+  },
+  "modeList": {
+    "message": "只在下方清单中的频道 / 服务器拦截"
+  },
+  "modeAll": {
+    "message": "整个 Discord 都拦截"
+  },
+  "modeOff": {
+    "message": "全部停用(Discord 照常运作)"
+  },
+  "modeHint": {
+    "message": "目前不是「只在清单中」模式,清单暂时不生效。"
+  },
+  "notDiscord": {
+    "message": "请在 Discord 网页版的标签页中开启这个窗口,才能把目前的频道加入清单。"
+  },
+  "threadHint": {
+    "message": "讨论串与论坛贴文有自己的 ID,不会被「频道」规则涵盖;受限的服务器建议直接加入「整个服务器」。"
+  },
+  "openOptions": {
+    "message": "管理清单与上传设定…"
+  },
+  "unnamed": {
+    "message": "(未命名)"
+  },
+  "statusBlocked": {
+    "message": "✓ 这个页面会拦截图片(粘贴时先确认)"
+  },
+  "statusEmpty": {
+    "message": "✗ 清单是空的,目前不会拦截任何地方;请用下面的按钮加入这个频道"
+  },
+  "statusNotBlocked": {
+    "message": "✗ 这个页面不会拦截,Discord 照常处理"
+  },
+  "addChannel": {
+    "message": "将此频道加入清单"
+  },
+  "removeChannel": {
+    "message": "从清单移除此频道"
+  },
+  "allDMs": {
+    "message": "所有私讯"
+  },
+  "wholeGuild": {
+    "message": "整个服务器"
+  },
+  "addGuildNamed": {
+    "message": "将$name$加入清单",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "name"
+      }
+    }
+  },
+  "removeGuildNamed": {
+    "message": "从清单移除$name$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "name"
+      }
+    }
+  },
+  "optionsTitle": {
+    "message": "Discord 图片上传 - 选项"
+  },
+  "beforeYouKnow": {
+    "message": "使用前请先知道"
+  },
+  "warnUpload": {
+    "message": "图片会被上传到<strong>第三方图床</strong>,不是 Discord。本扩展与这些服务没有任何关系。"
+  },
+  "warnPublic": {
+    "message": "任何人只要拿到图片网址就能看到图片,请不要上传不想让别人看到的内容。"
+  },
+  "warnCancel": {
+    "message": "每次上传前都会弹出确认窗口,按「取消」不会上传任何东西。"
+  },
+  "scopeHeading": {
+    "message": "拦截范围"
+  },
+  "scopeDesc": {
+    "message": "只有在你指定的频道或服务器里,粘贴或拖曳图片才会被拦截;其他地方 Discord 照常运作。"
+  },
+  "modeLabel": {
+    "message": "模式"
+  },
+  "modeListSuggested": {
+    "message": "只在下方清单中的频道 / 服务器拦截(建议)"
+  },
+  "modeOffShort": {
+    "message": "全部停用"
+  },
+  "emptyRules": {
+    "message": "清单是空的。到 Discord 页面点工具栏上的扩展图标,就能把目前的频道或服务器加入清单。"
+  },
+  "addByUrlLabel": {
+    "message": "通过网址手动添加"
+  },
+  "urlPlaceholder": {
+    "message": "https://discord.com/channels/服务器ID/频道ID"
+  },
+  "addChannelShort": {
+    "message": "加入此频道"
+  },
+  "addGuildShort": {
+    "message": "添加整个服务器"
+  },
+  "urlHint": {
+    "message": "在 Discord 网页版的地址栏复制目前频道的网址贴上即可。私讯的网址是 <code>/channels/@me/…</code>,加入「整个服务器」代表所有私讯。<br />讨论串与论坛贴文有自己的 ID,不会被「频道」规则涵盖;受限的服务器建议直接加入「整个服务器」。"
+  },
+  "uguuHeading": {
+    "message": "图源 1:Uguu(不需要帐号)"
+  },
+  "uguuAnon": {
+    "message": "匿名上传,不需要注册,也不用设定。"
+  },
+  "uguuTemp": {
+    "message": "文件为<strong>临时保存</strong>,多久删除由 Uguu 决定,到期后 Discord 里的图片会失效。"
+  },
+  "officialSite": {
+    "message": "官网:"
+  },
+  "imglinkHeading": {
+    "message": "图源 2:ImgLink(需要自己注册)"
+  },
+  "imglinkIntro": {
+    "message": "ImgLink 的 API 上传需要 API Key,请<strong>自行注册帐号</strong>后建立:"
+  },
+  "imglinkStep1": {
+    "message": "到官网注册免费帐号:"
+  },
+  "imglinkStep2": {
+    "message": "登录后到后台(Dashboard)的 <strong>API Keys</strong> 区块,按 <strong>Generate New Key</strong> 建立密钥:"
+  },
+  "imglinkStep3": {
+    "message": "把密钥贴在下面的栏位并保存。"
+  },
+  "privacyHeading": {
+    "message": "关于隐私(只有知道网址的人看得到)"
+  },
+  "privacyPrivate": {
+    "message": "ImgLink 的图片可设为「私密(private)」。依官方说明,私密图片只能透过网址存取,不会被搜寻或出现在公开页面。"
+  },
+  "privacyDefault": {
+    "message": "图片预设可能是<strong>公开</strong>的。本扩展<strong>无法替你设定私密</strong>,请在 ImgLink 的帐号后台自行把图片设为私密(界面以官网为准)。"
+  },
+  "privacyTest": {
+    "message": "私密图片能不能在 Discord 正常显示预览,请先自己测试一张。"
+  },
+  "apiDocs": {
+    "message": "API 文档:"
+  },
+  "apiKeyLabel": {
+    "message": "ImgLink API Key"
+  },
+  "apiKeyPlaceholder": {
+    "message": "贴上你的 API Key"
+  },
+  "keyHint": {
+    "message": "密钥只存在这个浏览器的扩展存储空间,由后台程序使用,不会传给 Discord 页面。只有选择 ImgLink 上传时才需要。"
+  },
+  "save": {
+    "message": "保存"
+  },
+  "clearKey": {
+    "message": "清除 Key"
+  },
+  "savedKey": {
+    "message": "已保存 ImgLink API Key"
+  },
+  "pasteKeyFirst": {
+    "message": "请先贴上 API Key"
+  },
+  "saved": {
+    "message": "已保存"
+  },
+  "cleared": {
+    "message": "已清除"
+  },
+  "noGuildId": {
+    "message": "找不到服务器 ID"
+  },
+  "noChannelId": {
+    "message": "找不到频道 ID"
+  },
+  "guildExists": {
+    "message": "这个服务器已经在清单中"
+  },
+  "channelExists": {
+    "message": "这个频道已经在清单中"
+  },
+  "removed": {
+    "message": "已移除"
+  },
+  "added": {
+    "message": "已加入清单"
+  },
+  "badUrl": {
+    "message": "无法辨识网址,请贴上 https://discord.com/channels/… 这样的网址"
+  },
+  "noChannelInUrl": {
+    "message": "这个网址只有服务器,没有频道;请改用「添加整个服务器」"
+  },
+  "guildNamed": {
+    "message": "服务器 $id$",
+    "placeholders": {
+      "id": {
+        "content": "$1",
+        "example": "name"
+      }
+    }
+  },
+  "channelNamed": {
+    "message": "频道 $id$",
+    "placeholders": {
+      "id": {
+        "content": "$1",
+        "example": "name"
+      }
+    }
+  },
+  "tagChannel": {
+    "message": "频道"
+  },
+  "tagDM": {
+    "message": "私讯"
+  },
+  "tagGuild": {
+    "message": "服务器"
+  },
+  "remove": {
+    "message": "移除"
+  },
+  "readFileFailed": {
+    "message": "读取文件失败"
+  },
+  "hintImglink": {
+    "message": "ImgLink 需要先自行注册帐号,并建立 API Key 贴到扩展功能的「选项」页。图片预设可能是公开的,建议到 ImgLink 后台设为私密(只有知道网址的人看得到)。官网:"
+  },
+  "register": {
+    "message": "注册"
+  },
+  "dashboard": {
+    "message": "后台"
+  },
+  "hintUguu": {
+    "message": "Uguu 不需要帐号,文件为临时保存,保存多久由 Uguu 决定;知道网址的人都能看到。官网:"
+  },
+  "optUguu": {
+    "message": "Uguu(临时保存,时间由 Uguu 决定)"
+  },
+  "optImglink": {
+    "message": "ImgLink(需要 API Key,见扩展选项)"
+  },
+  "cancelUpload": {
+    "message": "取消(不上传)"
+  },
+  "modalTitle": {
+    "message": "确认上传图片?"
+  },
+  "modalWarn": {
+    "message": "图片会被上传到你选择的第三方图床,取得链接的人都能看到。取消勾选或按「取消」就不会上传任何东西。"
+  },
+  "uploadTo": {
+    "message": "上传到:"
+  },
+  "uploadSelected": {
+    "message": "上传选取的 $count$ 张",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "retrySelected": {
+    "message": "重试选取的 $count$ 张",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "defaultImageName": {
+    "message": "image"
+  },
+  "uploading": {
+    "message": "上传中…"
+  },
+  "fileTooLarge": {
+    "message": "文件超过 200MB"
+  },
+  "unknownError": {
+    "message": "未知错误"
+  },
+  "uploaded": {
+    "message": "✓ 已上传"
+  },
+  "insertFailed": {
+    "message": "找不到输入框或插入失败,网址已复制到剪贴板,请手动贴上(Ctrl+V)。"
+  },
+  "uploadTimeout": {
+    "message": "上传逾时"
+  },
+  "needImglinkKey": {
+    "message": "请先到扩展功能的「选项」填入 ImgLink API Key"
+  },
+  "imageOnly": {
+    "message": "只接受图片文件"
+  },
+  "unknownTarget": {
+    "message": "未知的上传目标"
+  },
+  "aboutHeading": {
+    "message": "关于作者与赞助"
+  },
+  "authorLabel": {
+    "message": "作者:"
+  },
+  "sponsorDesc": {
+    "message": "如果这套工具有帮助,欢迎小额赞助支持后续开发。"
+  },
+  "sponsorEcpay": {
+    "message": "赞助(ECPAY)"
+  },
+  "sponsorPaypal": {
+    "message": "赞助(PayPal)"
+  },
+  "popupAuthor": {
+    "message": "作者 Sid-1996"
+  }
+}

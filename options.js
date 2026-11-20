@@ -1,5 +1,7 @@
 const $ = (id) => document.getElementById(id);
 
+i18n.applyI18n();
+
 // ---------- ImgLink API Key ----------
 const keyInput = $("key");
 const statusEl = $("status");
@@ -12,21 +14,21 @@ function show(msg, ok = true) {
 chrome.storage.local.get("imglinkKey").then(({ imglinkKey }) => {
   if (imglinkKey) {
     keyInput.value = imglinkKey;
-    show("已儲存 ImgLink API Key");
+    show(t("savedKey"));
   }
 });
 
 $("save").addEventListener("click", async () => {
   const v = keyInput.value.trim();
-  if (!v) return show("請先貼上 API Key", false);
+  if (!v) return show(t("pasteKeyFirst"), false);
   await chrome.storage.local.set({ imglinkKey: v });
-  show("已儲存");
+  show(t("saved"));
 });
 
 $("clear").addEventListener("click", async () => {
   await chrome.storage.local.remove("imglinkKey");
   keyInput.value = "";
-  show("已清除");
+  show(t("cleared"));
 });
 
 // ---------- 攔截範圍 ----------
@@ -74,12 +76,12 @@ function parseDiscordUrl(input) {
   return { guildId: m[1], channelId: m[2] || null };
 }
 
-const guildLabel = (id) => (id === "@me" ? "所有私訊" : `伺服器 ${id}`);
-const channelLabel = (id) => `頻道 ${id}`;
+const guildLabel = (id) => (id === "@me" ? t("allDMs") : t("guildNamed", [id]));
+const channelLabel = (id) => t("channelNamed", [id]);
 
 function ruleTag(r) {
-  if (r.type === "channel") return "頻道";
-  return r.id === "@me" ? "私訊" : "伺服器";
+  if (r.type === "channel") return t("tagChannel");
+  return r.id === "@me" ? t("tagDM") : t("tagGuild");
 }
 
 function renderRules() {
@@ -103,11 +105,11 @@ function renderRules() {
 
     const del = document.createElement("button");
     del.className = "danger";
-    del.textContent = "移除";
+    del.textContent = t("remove");
     del.addEventListener("click", () => {
       scope.rules.splice(index, 1);
       saveScope();
-      scopeMsg("已移除");
+      scopeMsg(t("removed"));
     });
 
     li.append(tag, info, id, del);
@@ -121,9 +123,9 @@ async function saveScope() {
 }
 
 function addRule(type, id) {
-  if (!id) return scopeMsg(type === "guild" ? "找不到伺服器 ID" : "找不到頻道 ID", false);
+  if (!id) return scopeMsg(t(type === "guild" ? "noGuildId" : "noChannelId"), false);
   if (scope.rules.some((r) => r.type === type && r.id === id)) {
-    return scopeMsg(type === "guild" ? "這個伺服器已經在清單中" : "這個頻道已經在清單中", false);
+    return scopeMsg(t(type === "guild" ? "guildExists" : "channelExists"), false);
   }
   scope.rules.push({
     type,
@@ -132,7 +134,7 @@ function addRule(type, id) {
   });
   urlInput.value = "";
   saveScope();
-  scopeMsg("已加入清單");
+  scopeMsg(t("added"));
 }
 
 modeEl.addEventListener("change", () => {
@@ -142,14 +144,14 @@ modeEl.addEventListener("change", () => {
 
 $("addChannel").addEventListener("click", () => {
   const loc = parseDiscordUrl(urlInput.value);
-  if (!loc) return scopeMsg("無法辨識網址,請貼上 https://discord.com/channels/… 這樣的網址", false);
-  if (!loc.channelId) return scopeMsg("這個網址只有伺服器,沒有頻道;請改用「加入整個伺服器」", false);
+  if (!loc) return scopeMsg(t("badUrl"), false);
+  if (!loc.channelId) return scopeMsg(t("noChannelInUrl"), false);
   addRule("channel", loc.channelId);
 });
 
 $("addGuild").addEventListener("click", () => {
   const loc = parseDiscordUrl(urlInput.value);
-  if (!loc) return scopeMsg("無法辨識網址,請貼上 https://discord.com/channels/… 這樣的網址", false);
+  if (!loc) return scopeMsg(t("badUrl"), false);
   addRule("guild", loc.guildId);
 });
 

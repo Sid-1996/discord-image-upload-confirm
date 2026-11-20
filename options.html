@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8" />
-  <title>Discord 圖片上傳 - 選項</title>
+  <title data-i18n="optionsTitle">Discord 圖片上傳 - 選項</title>
   <style>
     body { font-family: "Segoe UI", "Microsoft JhengHei", sans-serif; max-width: 640px; margin: 40px auto; padding: 0 16px; color: #222; line-height: 1.6; }
     h1 { font-size: 22px; }
@@ -25,40 +25,46 @@
     #rules .info { flex: 1; min-width: 0; word-break: break-all; font-size: 13px; }
     #rules .id { color: #888; font-size: 12px; }
     #empty { color: #888; font-size: 13px; margin-top: 10px; }
+    .sponsors { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .sponsor { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border: 1px solid #ddd; border-radius: 8px; background: #fff; color: #222; text-decoration: none; font-size: 13px; }
+    .sponsor:hover { background: #f0f2ff; border-color: #b8c0ff; }
+    .thumb { display: inline-grid; place-items: center; width: 36px; height: 28px; border-radius: 6px; background: #fff0f3; }
+    .sponsor:hover .thumb { background: #ffe0e7; }
+    .heart { width: 18px; height: 18px; fill: #e0245e; display: block; }
   </style>
 </head>
 <body>
-  <h1>Discord 圖片上傳 - 選項</h1>
+  <h1 data-i18n="optionsTitle">Discord 圖片上傳 - 選項</h1>
 
   <div class="card warn">
-    <h2>使用前請先知道</h2>
+    <h2 data-i18n="beforeYouKnow">使用前請先知道</h2>
     <ul>
-      <li>圖片會被上傳到<strong>第三方圖床</strong>,不是 Discord。本擴充與這些服務沒有任何關係。</li>
-      <li>任何人只要拿到圖片網址就能看到圖片,請不要上傳不想讓別人看到的內容。</li>
-      <li>每次上傳前都會跳出確認視窗,按「取消」不會上傳任何東西。</li>
+      <li data-i18n-html="warnUpload">圖片會被上傳到<strong>第三方圖床</strong>,不是 Discord。本擴充與這些服務沒有任何關係。</li>
+      <li data-i18n="warnPublic">任何人只要拿到圖片網址就能看到圖片,請不要上傳不想讓別人看到的內容。</li>
+      <li data-i18n="warnCancel">每次上傳前都會跳出確認視窗,按「取消」不會上傳任何東西。</li>
     </ul>
   </div>
 
   <div class="card">
-    <h2>攔截範圍</h2>
-    <p>只有在你指定的頻道或伺服器裡,貼上或拖曳圖片才會被攔截;其他地方 Discord 照常運作。</p>
-    <label for="mode">模式</label>
+    <h2 data-i18n="scopeHeading">攔截範圍</h2>
+    <p data-i18n="scopeDesc">只有在你指定的頻道或伺服器裡,貼上或拖曳圖片才會被攔截;其他地方 Discord 照常運作。</p>
+    <label for="mode" data-i18n="modeLabel">模式</label>
     <select id="mode">
-      <option value="list">只在下方清單中的頻道 / 伺服器攔截(建議)</option>
-      <option value="all">整個 Discord 都攔截</option>
-      <option value="off">全部停用</option>
+      <option value="list" data-i18n="modeListSuggested">只在下方清單中的頻道 / 伺服器攔截(建議)</option>
+      <option value="all" data-i18n="modeAll">整個 Discord 都攔截</option>
+      <option value="off" data-i18n="modeOffShort">全部停用</option>
     </select>
 
     <ul id="rules"></ul>
-    <div id="empty">清單是空的。到 Discord 頁面點工具列上的擴充圖示,就能把目前的頻道或伺服器加入清單。</div>
+    <div id="empty" data-i18n="emptyRules">清單是空的。到 Discord 頁面點工具列上的擴充圖示,就能把目前的頻道或伺服器加入清單。</div>
 
-    <label for="url">用網址手動加入</label>
-    <input id="url" type="text" placeholder="https://discord.com/channels/伺服器ID/頻道ID" />
+    <label for="url" data-i18n="addByUrlLabel">用網址手動加入</label>
+    <input id="url" type="text" data-i18n-placeholder="urlPlaceholder" placeholder="https://discord.com/channels/伺服器ID/頻道ID" />
     <div class="row">
-      <button id="addChannel">加入此頻道</button>
-      <button id="addGuild" class="secondary">加入整個伺服器</button>
+      <button id="addChannel" data-i18n="addChannelShort">加入此頻道</button>
+      <button id="addGuild" class="secondary" data-i18n="addGuildShort">加入整個伺服器</button>
     </div>
-    <div class="hint">
+    <div class="hint" data-i18n-html="urlHint">
       在 Discord 網頁版的網址列複製目前頻道的網址貼上即可。私訊的網址是 <code>/channels/@me/…</code>,加入「整個伺服器」代表所有私訊。<br />
       討論串與論壇貼文有自己的 ID,不會被「頻道」規則涵蓋;被限制的伺服器建議直接加入「整個伺服器」。
     </div>
@@ -66,45 +72,62 @@
   </div>
 
   <div class="card">
-    <h2>圖源 1:Uguu(不需要帳號)</h2>
+    <h2 data-i18n="uguuHeading">圖源 1:Uguu(不需要帳號)</h2>
     <ul>
-      <li>匿名上傳,不需要註冊,也不用設定。</li>
-      <li>檔案是<strong>臨時保存</strong>,多久刪除由 Uguu 決定,到期後 Discord 裡的圖片會失效。</li>
-      <li>官網:<a href="https://uguu.se" target="_blank" rel="noopener noreferrer">https://uguu.se</a></li>
+      <li data-i18n="uguuAnon">匿名上傳,不需要註冊,也不用設定。</li>
+      <li data-i18n-html="uguuTemp">檔案是<strong>臨時保存</strong>,多久刪除由 Uguu 決定,到期後 Discord 裡的圖片會失效。</li>
+      <li><span data-i18n="officialSite">官網:</span><a href="https://uguu.se" target="_blank" rel="noopener noreferrer">https://uguu.se</a></li>
     </ul>
   </div>
 
   <div class="card">
-    <h2>圖源 2:ImgLink(需要自己註冊)</h2>
-    <p>ImgLink 的 API 上傳需要 API Key,請<strong>自行註冊帳號</strong>後建立:</p>
+    <h2 data-i18n="imglinkHeading">圖源 2:ImgLink(需要自己註冊)</h2>
+    <p data-i18n-html="imglinkIntro">ImgLink 的 API 上傳需要 API Key,請<strong>自行註冊帳號</strong>後建立:</p>
     <ol>
-      <li>到官網註冊免費帳號:<a href="https://imglink.cc/register" target="_blank" rel="noopener noreferrer">https://imglink.cc/register</a></li>
-      <li>登入後到後台(Dashboard)的 <strong>API Keys</strong> 區塊,按 <strong>Generate New Key</strong> 建立金鑰:<a href="https://imglink.cc/dashboard" target="_blank" rel="noopener noreferrer">https://imglink.cc/dashboard</a></li>
-      <li>把金鑰貼在下面的欄位並儲存。</li>
+      <li><span data-i18n="imglinkStep1">到官網註冊免費帳號:</span><a href="https://imglink.cc/register" target="_blank" rel="noopener noreferrer">https://imglink.cc/register</a></li>
+      <li><span data-i18n-html="imglinkStep2">登入後到後台(Dashboard)的 <strong>API Keys</strong> 區塊,按 <strong>Generate New Key</strong> 建立金鑰:</span><a href="https://imglink.cc/dashboard" target="_blank" rel="noopener noreferrer">https://imglink.cc/dashboard</a></li>
+      <li data-i18n="imglinkStep3">把金鑰貼在下面的欄位並儲存。</li>
     </ol>
-    <p><strong>關於隱私(只有知道網址的人看得到)</strong></p>
+    <p><strong><span data-i18n="privacyHeading">關於隱私(只有知道網址的人看得到)</span></strong></p>
     <ul>
-      <li>ImgLink 的圖片可設為「私密(private)」。依官方說明,私密圖片只能透過網址存取,不會被搜尋或出現在公開頁面。</li>
-      <li>圖片預設可能是<strong>公開</strong>的。本擴充<strong>無法替你設定私密</strong>,請在 ImgLink 的帳號後台自行把圖片設為私密(介面以官網為準)。</li>
-      <li>私密圖片能不能在 Discord 正常顯示預覽,請先自己測試一張。</li>
+      <li data-i18n="privacyPrivate">ImgLink 的圖片可設為「私密(private)」。依官方說明,私密圖片只能透過網址存取,不會被搜尋或出現在公開頁面。</li>
+      <li data-i18n-html="privacyDefault">圖片預設可能是<strong>公開</strong>的。本擴充<strong>無法替你設定私密</strong>,請在 ImgLink 的帳號後台自行把圖片設為私密(介面以官網為準)。</li>
+      <li data-i18n="privacyTest">私密圖片能不能在 Discord 正常顯示預覽,請先自己測試一張。</li>
     </ul>
-    <p>官網:<a href="https://imglink.cc" target="_blank" rel="noopener noreferrer">https://imglink.cc</a>
-      ・API 文件:<a href="https://imglink.cc/wiki/api-docs" target="_blank" rel="noopener noreferrer">https://imglink.cc/wiki/api-docs</a></p>
+    <p><span data-i18n="officialSite">官網:</span><a href="https://imglink.cc" target="_blank" rel="noopener noreferrer">https://imglink.cc</a>
+      ・<span data-i18n="apiDocs">API 文件:</span><a href="https://imglink.cc/wiki/api-docs" target="_blank" rel="noopener noreferrer">https://imglink.cc/wiki/api-docs</a></p>
 
-    <label for="key">ImgLink API Key</label>
-    <input id="key" type="password" autocomplete="off" placeholder="貼上你的 API Key" />
-    <div class="hint">
+    <label for="key" data-i18n="apiKeyLabel">ImgLink API Key</label>
+    <input id="key" type="password" autocomplete="off" data-i18n-placeholder="apiKeyPlaceholder" placeholder="貼上你的 API Key" />
+    <div class="hint" data-i18n="keyHint">
       金鑰只存在這個瀏覽器的擴充儲存空間,由背景程式使用,不會傳給 Discord 頁面。
       只有選擇 ImgLink 上傳時才需要。
     </div>
 
     <div class="row">
-      <button id="save">儲存</button>
-      <button id="clear" class="secondary">清除 Key</button>
+      <button id="save" data-i18n="save">儲存</button>
+      <button id="clear" class="secondary" data-i18n="clearKey">清除 Key</button>
     </div>
     <div class="msg" id="status"></div>
   </div>
 
+  <div class="card">
+    <h2 data-i18n="aboutHeading">關於作者與贊助</h2>
+    <p><span data-i18n="authorLabel">作者:</span> <a href="https://github.com/Sid-1996" target="_blank" rel="noopener noreferrer">Sid-1996</a></p>
+    <p class="hint" data-i18n="sponsorDesc">如果這套工具對你有幫助,歡迎小額贊助支持後續開發。</p>
+    <div class="sponsors">
+      <a class="sponsor" href="https://p.ecpay.com.tw/E0E3A" target="_blank" rel="noopener noreferrer">
+        <span class="thumb" aria-hidden="true"><svg class="heart" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
+        <span data-i18n="sponsorEcpay">贊助(ECPAY)</span>
+      </a>
+      <a class="sponsor" href="https://www.paypal.com/ncp/payment/GJS4D5VTSVWG4" target="_blank" rel="noopener noreferrer">
+        <span class="thumb" aria-hidden="true"><svg class="heart" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
+        <span data-i18n="sponsorPaypal">贊助(PayPal)</span>
+      </a>
+    </div>
+  </div>
+
+  <script src="i18n.js"></script>
   <script src="options.js"></script>
 </body>
 </html>

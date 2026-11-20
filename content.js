@@ -26,7 +26,7 @@
     new Promise((res, rej) => {
       const fr = new FileReader();
       fr.onload = () => res(fr.result);
-      fr.onerror = () => rej(new Error("讀取檔案失敗"));
+      fr.onerror = () => rej(new Error(t("readFileFailed")));
       fr.readAsDataURL(file);
     });
 
@@ -132,17 +132,16 @@
       hint.replaceChildren();
       if (select.value === "imglink") {
         hint.append(
-          "ImgLink 需要先自行註冊帳號,並建立 API Key 貼到擴充功能的「選項」頁。" +
-            "圖片預設可能是公開的,建議到 ImgLink 後台設為私密(只有知道網址的人看得到)。官網:",
+          t("hintImglink"),
           link("https://imglink.cc", "imglink.cc"),
           "・",
-          link("https://imglink.cc/register", "註冊"),
+          link("https://imglink.cc/register", t("register")),
           "・",
-          link("https://imglink.cc/dashboard", "後台")
+          link("https://imglink.cc/dashboard", t("dashboard"))
         );
       } else {
         hint.append(
-          "Uguu 不需要帳號,檔案為臨時保存,保存多久由 Uguu 決定;知道網址的人都能看到。官網:",
+          t("hintUguu"),
           link("https://uguu.se", "uguu.se")
         );
       }
@@ -155,26 +154,26 @@
       },
     });
     [
-      ["uguu", "Uguu(臨時保存,時間由 Uguu 決定)"],
-      ["imglink", "ImgLink(需要 API Key,見擴充選項)"],
-    ].forEach(([v, t]) => select.append(el("option", { value: v, text: t })));
+      ["uguu", "optUguu"],
+      ["imglink", "optImglink"],
+    ].forEach(([v, key]) => select.append(el("option", { value: v, text: t(key) })));
     select.value = settings.choice;
     if (select.value !== settings.choice) select.value = "uguu";
     updateHint();
 
-    const cancelBtn = el("button", { class: "cancel", text: "取消(不上傳)", onclick: () => !busy && close() });
+    const cancelBtn = el("button", { class: "cancel", text: t("cancelUpload"), onclick: () => !busy && close() });
     const goBtn = el("button", { class: "go", onclick: () => upload() });
 
     const card = el(
       "div",
       { class: "card", role: "dialog" },
-      el("div", { class: "head", text: "確認上傳圖片?" }),
+      el("div", { class: "head", text: t("modalTitle") }),
       el("div", {
         class: "warn",
-        text: "圖片會被上傳到你選擇的第三方圖床,取得連結的人都能看到。取消勾選或按「取消」就不會上傳任何東西。",
+        text: t("modalWarn"),
       }),
       list,
-      el("div", { class: "opts" }, el("span", { text: "上傳到:" }), select),
+      el("div", { class: "opts" }, el("span", { text: t("uploadTo") }), select),
       hint,
       note,
       el("div", { class: "foot" }, cancelBtn, goBtn)
@@ -189,7 +188,10 @@
 
     function refresh() {
       const n = items.filter((i) => !i.done && i.checkbox.checked).length;
-      goBtn.textContent = items.some((i) => i.failed) ? `重試選取的 ${n} 張` : `上傳選取的 ${n} 張`;
+      goBtn.textContent = t(
+        items.some((i) => i.failed) ? "retrySelected" : "uploadSelected",
+        [String(n)]
+      );
       goBtn.disabled = busy || n === 0;
       cancelBtn.disabled = busy;
     }
@@ -207,7 +209,7 @@
           el(
             "div",
             { class: "info" },
-            el("div", { class: "name", text: file.name || "image", title: file.name }),
+            el("div", { class: "name", text: file.name || t("defaultImageName"), title: file.name }),
             el("div", { class: "meta", text: `${file.type} · ${fmtSize(file.size)}` }),
             status
           )
@@ -228,9 +230,9 @@
       for (const it of items.filter((i) => !i.done && i.checkbox.checked)) {
         it.checkbox.disabled = true;
         it.status.className = "status";
-        it.status.textContent = "上傳中…";
+        it.status.textContent = t("uploading");
         try {
-          if (it.file.size > MAX_BYTES) throw new Error("檔案超過 200MB");
+          if (it.file.size > MAX_BYTES) throw new Error(t("fileTooLarge"));
           const dataUrl = await toDataUrl(it.file);
           const resp = await chrome.runtime.sendMessage({
             type: "upload",
@@ -239,12 +241,12 @@
             target,
             time,
           });
-          if (!resp?.ok) throw new Error(resp?.error || "未知錯誤");
+          if (!resp?.ok) throw new Error(resp?.error || t("unknownError"));
           it.done = true;
           it.failed = false;
           okUrls.push(resp.url);
           it.status.className = "status ok";
-          it.status.textContent = "✓ 已上傳";
+          it.status.textContent = t("uploaded");
         } catch (e) {
           it.failed = true;
           it.checkbox.disabled = false;
@@ -267,7 +269,7 @@
       if (okUrls.length) {
         const inserted = await insertText(editor, okUrls.join(" "));
         if (!inserted) {
-          const msg = "找不到輸入框或插入失敗,網址已複製到剪貼簿,請手動貼上(Ctrl+V)。";
+          const msg = t("insertFailed");
           if (allDone) alert(msg);
           else note.textContent = msg;
         }
