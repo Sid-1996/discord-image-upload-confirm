@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Discord 圖片上傳(需確認)",
+  "version": "0.5.0",
+  "description": "只在你指定的 Discord 頻道或伺服器中,貼上或拖曳圖片時先跳出確認視窗,確認後才上傳到 Uguu / ImgLink 並插入圖片網址。",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://discord.com/*",
+    "https://uguu.se/*",
+    "https://imglink.cc/*"
+  ],
+  "action": {
+    "default_title": "Discord 圖片上傳:攔截範圍",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://discord.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

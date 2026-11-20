@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <title>攔截範圍</title>
+  <style>
+    body { font-family: "Segoe UI", "Microsoft JhengHei", sans-serif; width: 340px; margin: 0; padding: 14px; color: #222; font-size: 14px; line-height: 1.5; }
+    h1 { font-size: 15px; margin: 0 0 10px; }
+    .box { border: 1px solid #ddd; border-radius: 8px; padding: 10px; margin-bottom: 10px; background: #fafafa; }
+    .title { font-weight: 600; word-break: break-all; }
+    .status { margin: 6px 0 0; font-size: 13px; }
+    .on { color: #188038; } .off { color: #a50e0e; }
+    button { width: 100%; margin-top: 8px; padding: 8px; border: 0; border-radius: 6px; background: #5865f2; color: #fff; font-size: 13px; cursor: pointer; }
+    button.remove { background: #d93025; }
+    button.link { background: none; color: #1a5fd0; text-decoration: underline; width: auto; padding: 0; margin: 0; }
+    label { display: block; margin: 4px 0; cursor: pointer; }
+    .hint { font-size: 12px; color: #666; margin-top: 6px; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <h1>圖片攔截範圍</h1>
+
+  <div class="box">
+    <label><input type="radio" name="mode" value="list" /> 只在下方清單中的頻道 / 伺服器攔截</label>
+    <label><input type="radio" name="mode" value="all" /> 整個 Discord 都攔截</label>
+    <label><input type="radio" name="mode" value="off" /> 全部停用(Discord 照常運作)</label>
+    <div class="hint hidden" id="modeHint">目前不是「只在清單中」模式,清單暫時不生效。</div>
+  </div>
+
+  <div class="box hidden" id="notDiscord">
+    請在 Discord 網頁版的分頁中開啟這個視窗,才能把目前的頻道加入清單。
+  </div>
+
+  <div class="box hidden" id="pageBox">
+    <div class="title" id="page"></div>
+    <div class="status" id="status"></div>
+    <button id="btnChannel" class="hidden"></button>
+    <button id="btnGuild" class="hidden"></button>
+    <div class="hint">討論串與論壇貼文有自己的 ID,不會被「頻道」規則涵蓋;被限制的伺服器建議直接加入「整個伺服器」。</div>
+  </div>
+
+  <button class="link" id="openOptions">管理清單與上傳設定…</button>
+
+  <script src="popup.js"></script>
+</body>
+</html>

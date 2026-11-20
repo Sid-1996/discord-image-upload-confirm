@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <title>Discord 圖片上傳 - 選項</title>
+  <style>
+    body { font-family: "Segoe UI", "Microsoft JhengHei", sans-serif; max-width: 640px; margin: 40px auto; padding: 0 16px; color: #222; line-height: 1.6; }
+    h1 { font-size: 22px; }
+    h2 { font-size: 17px; margin: 0 0 8px; }
+    .card { border: 1px solid #d0d0d0; border-radius: 10px; padding: 16px 18px; margin: 18px 0; background: #fafafa; }
+    .warn { background: #fff8e1; border-color: #f0d98a; }
+    ol, ul { margin: 6px 0 6px 20px; padding: 0; }
+    a { color: #1a5fd0; }
+    label { display: block; margin: 14px 0 6px; font-weight: 600; }
+    input[type="text"], input[type="password"], select { width: 100%; padding: 8px 10px; font-size: 14px; border: 1px solid #bbb; border-radius: 6px; box-sizing: border-box; }
+    .row { display: flex; gap: 8px; margin-top: 12px; }
+    button { padding: 8px 16px; font-size: 14px; border: 0; border-radius: 6px; background: #5865f2; color: #fff; cursor: pointer; }
+    button.secondary { background: #888; }
+    button.danger { background: #d93025; padding: 4px 10px; font-size: 13px; }
+    .hint { font-size: 13px; color: #666; margin-top: 6px; }
+    .msg { margin-top: 10px; font-size: 14px; min-height: 20px; }
+    #rules { list-style: none; margin: 10px 0 0; padding: 0; }
+    #rules li { display: flex; align-items: center; gap: 10px; padding: 8px 10px; margin-bottom: 6px; background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; }
+    #rules .tag { flex: none; font-size: 12px; padding: 2px 8px; border-radius: 10px; background: #e8eaf6; color: #3949ab; }
+    #rules .info { flex: 1; min-width: 0; word-break: break-all; font-size: 13px; }
+    #rules .id { color: #888; font-size: 12px; }
+    #empty { color: #888; font-size: 13px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Discord 圖片上傳 - 選項</h1>
+
+  <div class="card warn">
+    <h2>使用前請先知道</h2>
+    <ul>
+      <li>圖片會被上傳到<strong>第三方圖床</strong>,不是 Discord。本擴充與這些服務沒有任何關係。</li>
+      <li>任何人只要拿到圖片網址就能看到圖片,請不要上傳不想讓別人看到的內容。</li>
+      <li>每次上傳前都會跳出確認視窗,按「取消」不會上傳任何東西。</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>攔截範圍</h2>
+    <p>只有在你指定的頻道或伺服器裡,貼上或拖曳圖片才會被攔截;其他地方 Discord 照常運作。</p>
+    <label for="mode">模式</label>
+    <select id="mode">
+      <option value="list">只在下方清單中的頻道 / 伺服器攔截(建議)</option>
+      <option value="all">整個 Discord 都攔截</option>
+      <option value="off">全部停用</option>
+    </select>
+
+    <ul id="rules"></ul>
+    <div id="empty">清單是空的。到 Discord 頁面點工具列上的擴充圖示,就能把目前的頻道或伺服器加入清單。</div>
+
+    <label for="url">用網址手動加入</label>
+    <input id="url" type="text" placeholder="https://discord.com/channels/伺服器ID/頻道ID" />
+    <div class="row">
+      <button id="addChannel">加入此頻道</button>
+      <button id="addGuild" class="secondary">加入整個伺服器</button>
+    </div>
+    <div class="hint">
+      在 Discord 網頁版的網址列複製目前頻道的網址貼上即可。私訊的網址是 <code>/channels/@me/…</code>,加入「整個伺服器」代表所有私訊。<br />
+      討論串與論壇貼文有自己的 ID,不會被「頻道」規則涵蓋;被限制的伺服器建議直接加入「整個伺服器」。
+    </div>
+    <div class="msg" id="scopeMsg"></div>
+  </div>
+
+  <div class="card">
+    <h2>圖源 1:Uguu(不需要帳號)</h2>
+    <ul>
+      <li>匿名上傳,不需要註冊,也不用設定。</li>
+      <li>檔案是<strong>臨時保存</strong>,多久刪除由 Uguu 決定,到期後 Discord 裡的圖片會失效。</li>
+      <li>官網:<a href="https://uguu.se" target="_blank" rel="noopener noreferrer">https://uguu.se</a></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>圖源 2:ImgLink(需要自己註冊)</h2>
+    <p>ImgLink 的 API 上傳需要 API Key,請<strong>自行註冊帳號</strong>後建立:</p>
+    <ol>
+      <li>到官網註冊免費帳號:<a href="https://imglink.cc/register" target="_blank" rel="noopener noreferrer">https://imglink.cc/register</a></li>
+      <li>登入後到後台(Dashboard)的 <strong>API Keys</strong> 區塊,按 <strong>Generate New Key</strong> 建立金鑰:<a href="https://imglink.cc/dashboard" target="_blank" rel="noopener noreferrer">https://imglink.cc/dashboard</a></li>
+      <li>把金鑰貼在下面的欄位並儲存。</li>
+    </ol>
+    <p><strong>關於隱私(只有知道網址的人看得到)</strong></p>
+    <ul>
+      <li>ImgLink 的圖片可設為「私密(private)」。依官方說明,私密圖片只能透過網址存取,不會被搜尋或出現在公開頁面。</li>
+      <li>圖片預設可能是<strong>公開</strong>的。本擴充<strong>無法替你設定私密</strong>,請在 ImgLink 的帳號後台自行把圖片設為私密(介面以官網為準)。</li>
+      <li>私密圖片能不能在 Discord 正常顯示預覽,請先自己測試一張。</li>
+    </ul>
+    <p>官網:<a href="https://imglink.cc" target="_blank" rel="noopener noreferrer">https://imglink.cc</a>
+      ・API 文件:<a href="https://imglink.cc/wiki/api-docs" target="_blank" rel="noopener noreferrer">https://imglink.cc/wiki/api-docs</a></p>
+
+    <label for="key">ImgLink API Key</label>
+    <input id="key" type="password" autocomplete="off" placeholder="貼上你的 API Key" />
+    <div class="hint">
+      金鑰只存在這個瀏覽器的擴充儲存空間,由背景程式使用,不會傳給 Discord 頁面。
+      只有選擇 ImgLink 上傳時才需要。
+    </div>
+
+    <div class="row">
+      <button id="save">儲存</button>
+      <button id="clear" class="secondary">清除 Key</button>
+    </div>
+    <div class="msg" id="status"></div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
