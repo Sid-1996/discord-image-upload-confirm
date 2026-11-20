@@ -30,7 +30,7 @@
     "message": "Open this window from a Discord web tab to add the current channel to the list."
   },
   "threadHint": {
-    "message": "Threads and forum posts have their own IDs and are not covered by \"channel\" rules; for restricted servers, add the whole server instead."
+    "message": "Threads and forum posts have their own IDs and are not covered by \"channel\" rules; if you want to cover an entire server, add it as a server rule instead."
   },
   "openOptions": {
     "message": "Manage list & upload settings…"
@@ -123,7 +123,7 @@
     "message": "Add whole server"
   },
   "urlHint": {
-    "message": "Copy the current channel URL from Discord's address bar and paste it here. DM URLs look like <code>/channels/@me/…</code>; adding \"whole server\" covers all DMs.<br />Threads and forum posts have their own IDs and are not covered by \"channel\" rules; for restricted servers, add the whole server instead."
+    "message": "Copy the current channel URL from Discord's address bar and paste it here. DM URLs look like <code>/channels/@me/…</code>; adding \"whole server\" covers all DMs.<br />Threads and forum posts have their own IDs and are not covered by \"channel\" rules; if you want to cover an entire server, add it as a server rule instead."
   },
   "uguuHeading": {
     "message": "Host 1: Uguu (no account needed)"
