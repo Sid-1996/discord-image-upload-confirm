@@ -17,17 +17,50 @@
   "modeList": {
     "message": "只在下方清单中的频道 / 服务器拦截"
   },
+  "autoConfirmLabel": {
+    "message": "不再弹出确认窗口，直接使用上次选择的图床上传"
+  },
+  "autoConfirmHint": {
+    "message": "开启后在频道 / 服务器内粘贴图片会直接上传，不再显示确认窗口。"
+  },
+  "autoUploadToast": {
+    "message": "正在自动上传图片（共 $count$ 张）…",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "autoUploadDone": {
+    "message": "上传完成，已获得 $count$ 张链接",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "autoUploadFailed": {
+    "message": "部分上传失败（$count$ 张）",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
   "modeAll": {
-    "message": "整个 Discord 都拦截"
+    "message": "整个 Discord / Stoat 都拦截"
   },
   "modeOff": {
-    "message": "全部停用(Discord 照常运作)"
+    "message": "全部停用(网站正常运作)"
   },
   "modeHint": {
     "message": "目前不是「只在清单中」模式,清单暂时不生效。"
   },
   "notDiscord": {
-    "message": "请在 Discord 网页版的标签页中开启这个窗口,才能把目前的频道加入清单。"
+    "message": "请在 Discord 或 Stoat 网页版的标签页中开启这个窗口,才能把目前的频道加入清单。"
   },
   "threadHint": {
     "message": "讨论串与论坛贴文有自己的 ID,不会被「频道」规则涵盖;想涵盖整个服务器时,建议直接加入「整个服务器」。"
@@ -45,7 +78,7 @@
     "message": "✗ 清单是空的,目前不会拦截任何地方;请用下面的按钮加入这个频道"
   },
   "statusNotBlocked": {
-    "message": "✗ 这个页面不会拦截,Discord 照常处理"
+    "message": "✗ 这个页面不会拦截,网站正常处理"
   },
   "addChannel": {
     "message": "将此频道加入清单"
@@ -84,7 +117,7 @@
     "message": "使用前请先知道"
   },
   "warnUpload": {
-    "message": "图片会被上传到<strong>第三方图床</strong>,不是 Discord。本扩展与这些服务没有任何关系。"
+    "message": "图片会被上传到<strong>第三方图店</strong>，不是 Discord 或 Stoat。本扩展与这些服务没有任何关系。"
   },
   "warnPublic": {
     "message": "任何人只要拿到图片网址就能看到图片,请不要上传不想让别人看到的内容。"
@@ -96,7 +129,7 @@
     "message": "拦截范围"
   },
   "scopeDesc": {
-    "message": "只有在你指定的频道或服务器里,粘贴或拖曳图片才会被拦截;其他地方 Discord 照常运作。"
+    "message": "只有在你指定的频道或服务器里,粘贴或拖曳图片才会被拦截;其他地方正常运作。"
   },
   "modeLabel": {
     "message": "模式"
@@ -108,13 +141,13 @@
     "message": "全部停用"
   },
   "emptyRules": {
-    "message": "清单是空的。到 Discord 页面点工具栏上的扩展图标,就能把目前的频道或服务器加入清单。"
+    "message": "清单是空的。到 Discord 或 Stoat 页面点工具栏上的扩展图标,就能把目前的频道或服务器加入清单。"
   },
   "addByUrlLabel": {
     "message": "通过网址手动添加"
   },
   "urlPlaceholder": {
-    "message": "https://discord.com/channels/服务器ID/频道ID"
+    "message": "https://discord.com/channels/服务器ID/频道ID 或 https://stoat.chat/server/服务器ID"
   },
   "addChannelShort": {
     "message": "加入此频道"
@@ -123,7 +156,7 @@
     "message": "添加整个服务器"
   },
   "urlHint": {
-    "message": "在 Discord 网页版的地址栏复制目前频道的网址贴上即可。私讯的网址是 <code>/channels/@me/…</code>,加入「整个服务器」代表所有私讯。<br />讨论串与论坛贴文有自己的 ID,不会被「频道」规则涵盖;想涵盖整个服务器时,建议直接加入「整个服务器」。"
+    "message": "在 Discord 或 Stoat 网页版的地址栏复制目前频道的网址贴上即可。Stoat 的频道网址如 <code>https://stoat.chat/server/服务器ID/channel/频道ID</code>。私讯的网址是 <code>/channels/@me/…</code>,加入「整个服务器」代表所有私讯。<br />讨论串与论坛贴文有自己的 ID,不会被「频道」规则涵盖;想涵盖整个服务器时,建议直接加入「整个服务器」。"
   },
   "uguuHeading": {
     "message": "图源 1:Uguu(不需要帐号)"
@@ -132,7 +165,7 @@
     "message": "匿名上传,不需要注册,也不用设定。"
   },
   "uguuTemp": {
-    "message": "文件为<strong>临时保存</strong>,多久删除由 Uguu 决定,到期后 Discord 里的图片会失效。"
+    "message": "文件为<strong>临时保存</strong>,多久删除由 Uguu 决定,到期后消息里的图片会失效。"
   },
   "officialSite": {
     "message": "官网:"
@@ -213,7 +246,7 @@
     "message": "已加入清单"
   },
   "badUrl": {
-    "message": "无法辨识网址,请贴上 https://discord.com/channels/… 这样的网址"
+    "message": "无法辨识网址,请贴上 https://discord.com/channels/… 或 https://stoat.chat/server/… 这样的网址"
   },
   "noChannelInUrl": {
     "message": "这个网址只有服务器,没有频道;请改用「添加整个服务器」"

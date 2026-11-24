@@ -19,6 +19,23 @@ function parseDiscordUrl(url) {
   }
 }
 
+function parseStoatUrl(url) {
+  try {
+    const u = new URL(url);
+    if (u.hostname !== "stoat.chat" && !u.hostname.endsWith(".stoat.chat")) return null;
+    const server = u.pathname.match(/\/server\/([A-Z\d]{26})/);
+    const channel = u.pathname.match(/\/channel\/([A-Z\d]{26})/);
+    if (!server && !channel) return null;
+    return { guildId: server?.[1] || null, channelId: channel?.[1] || null };
+  } catch {
+    return null;
+  }
+}
+
+function parsePlatformUrl(url) {
+  return parseDiscordUrl(url) || parseStoatUrl(url);
+}
+
 const cleanTitle = (title = "") =>
   title.replace(/^\(\d+\)\s*/, "").replace(/\s*-\s*Discord$/, "").trim() || t("unnamed");
 
@@ -85,21 +102,25 @@ function render() {
   } else {
     $("btnChannel").classList.add("hidden");
   }
-  const guildName = t(loc.guildId === "@me" ? "allDMs" : "wholeGuild");
-  setButton(
-    $("btnGuild"),
-    "guild",
-    loc.guildId,
-    t("addGuildNamed", [guildName]),
-    t("removeGuildNamed", [guildName])
-  );
+  if (loc.guildId) {
+    const guildName = t(loc.guildId === "@me" ? "allDMs" : "wholeGuild");
+    setButton(
+      $("btnGuild"),
+      "guild",
+      loc.guildId,
+      t("addGuildNamed", [guildName]),
+      t("removeGuildNamed", [guildName])
+    );
+  } else {
+    $("btnGuild").classList.add("hidden");
+  }
 }
 
 (async () => {
   i18n.applyI18n();
 
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  loc = tab?.url ? parseDiscordUrl(tab.url) : null;
+  loc = tab?.url ? parsePlatformUrl(tab.url) : null;
   label = cleanTitle(tab?.title);
 
   const { scope: s } = await chrome.storage.local.get("scope");

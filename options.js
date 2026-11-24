@@ -76,6 +76,30 @@ function parseDiscordUrl(input) {
   return { guildId: m[1], channelId: m[2] || null };
 }
 
+function parseStoatUrl(input) {
+  const v = String(input || "").trim();
+  if (!v) return null;
+  let u;
+  try {
+    u = new URL(v);
+  } catch {
+    try {
+      u = new URL(v.startsWith("/") ? "https://stoat.chat" + v : "https://" + v);
+    } catch {
+      return null;
+    }
+  }
+  if (u.hostname !== "stoat.chat" && !u.hostname.endsWith(".stoat.chat")) return null;
+  const server = u.pathname.match(/\/server\/([A-Z\d]{26})/);
+  const channel = u.pathname.match(/\/channel\/([A-Z\d]{26})/);
+  if (!server && !channel) return null;
+  return { guildId: server?.[1] || null, channelId: channel?.[1] || null };
+}
+
+function parsePlatformUrl(input) {
+  return parseDiscordUrl(input) || parseStoatUrl(input);
+}
+
 const guildLabel = (id) => (id === "@me" ? t("allDMs") : t("guildNamed", [id]));
 const channelLabel = (id) => t("channelNamed", [id]);
 
@@ -142,16 +166,29 @@ modeEl.addEventListener("change", () => {
   saveScope();
 });
 
+// 「不再彈出確認視窗」開關
+const autoConfirmEl = $("autoConfirm");
+chrome.storage.local.get("settings").then(({ settings }) => {
+  autoConfirmEl.checked = settings?.autoConfirm === true;
+});
+autoConfirmEl.addEventListener("change", async () => {
+  const { settings } = await chrome.storage.local.get("settings");
+  await chrome.storage.local.set({
+    settings: { ...(settings || {}), autoConfirm: autoConfirmEl.checked },
+  });
+});
+
 $("addChannel").addEventListener("click", () => {
-  const loc = parseDiscordUrl(urlInput.value);
+  const loc = parsePlatformUrl(urlInput.value);
   if (!loc) return scopeMsg(t("badUrl"), false);
   if (!loc.channelId) return scopeMsg(t("noChannelInUrl"), false);
   addRule("channel", loc.channelId);
 });
 
 $("addGuild").addEventListener("click", () => {
-  const loc = parseDiscordUrl(urlInput.value);
+  const loc = parsePlatformUrl(urlInput.value);
   if (!loc) return scopeMsg(t("badUrl"), false);
+  if (!loc.guildId) return scopeMsg(t("noGuildId"), false);
   addRule("guild", loc.guildId);
 });
 

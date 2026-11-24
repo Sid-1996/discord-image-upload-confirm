@@ -17,17 +17,50 @@
   "modeList": {
     "message": "Intercept only in channels / servers in the list below"
   },
+  "autoConfirmLabel": {
+    "message": "Skip the confirmation window and upload with the last choice"
+  },
+  "autoConfirmHint": {
+    "message": "When on, images in channels/servers upload directly without the confirm window."
+  },
+  "autoUploadToast": {
+    "message": "Auto-uploading images ($count$ total)…",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "autoUploadDone": {
+    "message": "Upload finished, $count$ links obtained",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "autoUploadFailed": {
+    "message": "Some uploads failed ($count$)",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
   "modeAll": {
-    "message": "Intercept across all of Discord"
+    "message": "Intercept across Discord and Stoat"
   },
   "modeOff": {
-    "message": "Disable entirely (Discord works as normal)"
+    "message": "Disable entirely (pages work as normal)"
   },
   "modeHint": {
     "message": "Not in \"list only\" mode right now; the list has no effect."
   },
   "notDiscord": {
-    "message": "Open this window from a Discord web tab to add the current channel to the list."
+    "message": "Open this window from a Discord or Stoat web tab to add the current channel to the list."
   },
   "threadHint": {
     "message": "Threads and forum posts have their own IDs and are not covered by \"channel\" rules; if you want to cover an entire server, add it as a server rule instead."
@@ -45,7 +78,7 @@
     "message": "✗ The list is empty, nothing is intercepted right now; use the button below to add this channel"
   },
   "statusNotBlocked": {
-    "message": "✗ Images on this page are not intercepted; Discord handles them as normal"
+    "message": "✗ Images on this page are not intercepted; the site handles them as normal"
   },
   "addChannel": {
     "message": "Add this channel to the list"
@@ -84,7 +117,7 @@
     "message": "Before you start"
   },
   "warnUpload": {
-    "message": "Images are uploaded to a <strong>third-party image host</strong>, not Discord. This extension is not affiliated with these services."
+    "message": "Images are uploaded to a <strong>third-party image host</strong>, not Discord or Stoat. This extension is not affiliated with these services."
   },
   "warnPublic": {
     "message": "Anyone with the image URL can see the image. Do not upload anything you don't want others to see."
@@ -96,7 +129,7 @@
     "message": "Intercept Scope"
   },
   "scopeDesc": {
-    "message": "Only pasting or dropping images in the channels or servers you specify will be intercepted; everywhere else Discord works as normal."
+    "message": "Only pasting or dropping images in the channels or servers you specify will be intercepted; everywhere else sites work as normal."
   },
   "modeLabel": {
     "message": "Mode"
@@ -108,13 +141,13 @@
     "message": "Disable entirely"
   },
   "emptyRules": {
-    "message": "The list is empty. Open the extension icon on a Discord page to add the current channel or server."
+    "message": "The list is empty. Open the extension icon on a Discord or Stoat page to add the current channel or server."
   },
   "addByUrlLabel": {
     "message": "Add manually by URL"
   },
   "urlPlaceholder": {
-    "message": "https://discord.com/channels/serverID/channelID"
+    "message": "https://discord.com/channels/serverID/channelID or https://stoat.chat/server/serverID"
   },
   "addChannelShort": {
     "message": "Add this channel"
@@ -123,7 +156,7 @@
     "message": "Add whole server"
   },
   "urlHint": {
-    "message": "Copy the current channel URL from Discord's address bar and paste it here. DM URLs look like <code>/channels/@me/…</code>; adding \"whole server\" covers all DMs.<br />Threads and forum posts have their own IDs and are not covered by \"channel\" rules; if you want to cover an entire server, add it as a server rule instead."
+    "message": "Copy the current channel URL from Discord or Stoat's address bar and paste it here. Stoat channel URLs look like <code>https://stoat.chat/server/serverID/channel/channelID</code>. DM URLs are <code>/channels/@me/…</code> on Discord; adding \"whole server\" covers all DMs.<br />Threads and forum posts have their own IDs and are not covered by \"channel\" rules; if you want to cover an entire server, add it as a server rule instead."
   },
   "uguuHeading": {
     "message": "Host 1: Uguu (no account needed)"
@@ -132,7 +165,7 @@
     "message": "Anonymous upload; no registration or setup required."
   },
   "uguuTemp": {
-    "message": "Files are stored <strong>temporarily</strong>; how long they last is up to Uguu. Images in Discord will expire when they are deleted."
+    "message": "Files are stored <strong>temporarily</strong>; how long they last is up to Uguu. Images in messages will expire when they are deleted."
   },
   "officialSite": {
     "message": "Website:"
@@ -213,7 +246,7 @@
     "message": "Added to the list"
   },
   "badUrl": {
-    "message": "Unrecognized URL, please paste a link like https://discord.com/channels/…"
+    "message": "Unrecognized URL, please paste a link like https://discord.com/channels/… or https://stoat.chat/server/…"
   },
   "noChannelInUrl": {
     "message": "This URL only has a server, no channel; please use \"Add whole server\" instead"

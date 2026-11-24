@@ -14,6 +14,8 @@
     label { display: block; margin: 14px 0 6px; font-weight: 600; }
     input[type="text"], input[type="password"], select { width: 100%; padding: 8px 10px; font-size: 14px; border: 1px solid #bbb; border-radius: 6px; box-sizing: border-box; }
     .row { display: flex; gap: 8px; margin-top: 12px; }
+    .autoRow { display: flex; align-items: center; gap: 8px; margin-top: 12px; }
+    .autoRow span { font-size: 13px; color: #666; font-weight: 400; }
     button { padding: 8px 16px; font-size: 14px; border: 0; border-radius: 6px; background: #5865f2; color: #fff; cursor: pointer; }
     button.secondary { background: #888; }
     button.danger { background: #d93025; padding: 4px 10px; font-size: 13px; }
@@ -54,6 +56,11 @@
       <option value="all" data-i18n="modeAll">整個 Discord 都攔截</option>
       <option value="off" data-i18n="modeOffShort">全部停用</option>
     </select>
+    <div class="autoRow">
+      <input id="autoConfirm" type="checkbox" />
+      <span data-i18n="autoConfirmLabel">不再彈出確認視窗,直接使用上次選擇的圖床上傳</span>
+    </div>
+    <div class="hint" data-i18n="autoConfirmHint">開啟後在頻道 / 伺服器內貼上圖片會直接上傳,不再顯示確認視窗。</div>
 
     <ul id="rules"></ul>
     <div id="empty" data-i18n="emptyRules">清單是空的。到 Discord 頁面點工具列上的擴充圖示,就能把目前的頻道或伺服器加入清單。</div>

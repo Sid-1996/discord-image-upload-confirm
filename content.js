@@ -4,8 +4,20 @@
   "use strict";
 
   const MAX_BYTES = 200 * 1024 * 1024;
-  const EDITOR_SELECTOR = '[role="textbox"][data-slate-editor="true"]';
-  const DEFAULT_SETTINGS = { choice: "uguu" }; // "uguu" 或 "imglink"
+  // 輸入框選擇器：Discord 的 Slate 編輯器與 Stoat 的 CodeMirror 6 編輯器
+  const DISCORD_EDITOR_SELECTOR = '[role="textbox"][data-slate-editor="true"]';
+  const STOAT_EDITOR_SELECTOR = '.cm-editor .cm-content';
+  const EDITORS = [DISCORD_EDITOR_SELECTOR, STOAT_EDITOR_SELECTOR];
+  const DEFAULT_SETTINGS = { choice: "uguu", autoConfirm: false }; // "uguu" 或 "imglink"; autoConfirm=true → 直接上傳、不彈視窗
+
+  const findEditor = () => {
+    for (const sel of EDITORS) {
+      const el = document.querySelector(sel);
+      if (el) return el;
+    }
+    return null;
+  };
+  const isStoatEditor = (el) => !!el.closest(".cm-editor");
 
   let modal = null; // 目前開啟的確認視窗
 
@@ -44,9 +56,9 @@
 
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-  // 讓 Discord(Slate)自己處理插入,內部狀態才會同步,之後打字網址不會消失
+  // 讓平台自己處理插入,內部狀態才會同步,之後打字網址不會消失
   async function insertText(editor, text) {
-    const box = editor && editor.isConnected ? editor : document.querySelector(EDITOR_SELECTOR);
+    const box = editor && editor.isConnected ? editor : findEditor();
     if (!box) {
       navigator.clipboard?.writeText(text).catch(() => {});
       return false;
@@ -57,15 +69,24 @@
     box.focus();
     await sleep(80);
 
-    // 方法 1:模擬貼上純文字(走 Discord 自己的貼上處理)
-    try {
+    if (isStoatEditor(box)) {
+      // Stoat 用 CodeMirror 6:合成 paste 事件將網址插入編輯器
       const dt = new DataTransfer();
       dt.setData("text/plain", text + " ");
       box.dispatchEvent(
         new ClipboardEvent("paste", { clipboardData: dt, bubbles: true, cancelable: true })
       );
-    } catch (e) {
-      console.warn("[catbox] 模擬貼上失敗", e);
+    } else {
+      // Discord(Slate):方法 1 模擬貼上純文字(走 Discord 自己的貼上處理)
+      try {
+        const dt = new DataTransfer();
+        dt.setData("text/plain", text + " ");
+        box.dispatchEvent(
+          new ClipboardEvent("paste", { clipboardData: dt, bubbles: true, cancelable: true })
+        );
+      } catch (e) {
+        console.warn("[catbox] 模擬貼上失敗", e);
+      }
     }
     await sleep(150);
     if (present()) return true;
@@ -102,6 +123,20 @@
     .status.err { color: #fa777c; } .status.ok { color: #57f287; }
     .opts { padding: 8px 20px; display: flex; align-items: center; gap: 8px; font-size: 13px; color: #b5bac1; }
     select { background: #1e1f22; color: #f2f3f5; border: 1px solid #3f4147; border-radius: 6px; padding: 5px 8px; }
+    .autoRow { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #b5bac1; margin-left: 8px; white-space: nowrap; }
+    .toast {
+      max-width: 86vw;
+      padding: 10px 16px;
+      border-radius: 10px;
+      background: rgba(32, 32, 36, 0.95);
+      color: #f2f3f5;
+      font-size: 14px;
+      line-height: 1.4;
+      box-shadow: 0 8px 24px rgba(0,0,0,.5);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
     .note { padding: 0 20px 6px; font-size: 12px; color: #fee75c; min-height: 16px; }
     .hint { padding: 0 20px 8px; font-size: 12px; color: #b5bac1; line-height: 1.6; }
     .hint a { color: #00a8fc; }
@@ -112,6 +147,30 @@
     .go { background: #5865f2; } .go:hover:not(:disabled) { background: #4752c4; }
     .cancel:focus-visible, .go:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
   `;
+
+  // ---------- 自動上傳時的「運行中」提示 ----------
+  let toastHost = null;
+  let toastEl = null;
+  let toastTimer = null;
+  function showToast(text, dismissMs = 4000) {
+    if (!toastHost) {
+      toastHost = document.createElement("div");
+      toastHost.style.cssText =
+        "all:initial;position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:2147483647;pointer-events:none;";
+      toastEl = document.createElement("div");
+      toastEl.className = "toast";
+      toastHost.append(toastEl);
+      document.documentElement.append(toastHost);
+    }
+    toastEl.textContent = text;
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toastHost.remove();
+      toastHost = null;
+      toastEl = null;
+      toastTimer = null;
+    }, dismissMs);
+  }
 
   // ---------- 確認視窗 ----------
   async function openModal(files, editor) {
@@ -149,7 +208,10 @@
 
     const select = el("select", {
       onchange: () => {
-        chrome.storage.local.set({ settings: { choice: select.value } }).catch(() => {});
+        // 合併寫回,保留 autoConfirm(勾選框會更新 storage 上的完整 settings)
+        chrome.storage.local
+          .set({ settings: { ...settings, choice: select.value } })
+          .catch(() => {});
         updateHint();
       },
     });
@@ -160,6 +222,23 @@
     select.value = settings.choice;
     if (select.value !== settings.choice) select.value = "uguu";
     updateHint();
+
+    // 「不再彈出確認視窗」開關:勾選時同時存下 autoConfirm 與目前選擇,下次觸發直接上傳
+    const autoConfirmCb = el("input", {
+      type: "checkbox",
+      onchange: () => {
+        chrome.storage.local
+          .set({
+            settings: {
+              ...settings,
+              autoConfirm: autoConfirmCb.checked,
+              choice: select.value,
+            },
+          })
+          .catch(() => {});
+      },
+    });
+    autoConfirmCb.checked = settings.autoConfirm === true;
 
     const cancelBtn = el("button", { class: "cancel", text: t("cancelUpload"), onclick: () => !busy && close() });
     const goBtn = el("button", { class: "go", onclick: () => upload() });
@@ -173,7 +252,13 @@
         text: t("modalWarn"),
       }),
       list,
-      el("div", { class: "opts" }, el("span", { text: t("uploadTo") }), select),
+      el(
+        "div",
+        { class: "opts" },
+        el("span", { text: t("uploadTo") }),
+        select,
+        el("label", { class: "autoRow" }, autoConfirmCb, el("span", { text: t("autoConfirmLabel") }))
+      ),
       hint,
       note,
       el("div", { class: "foot" }, cancelBtn, goBtn)
@@ -220,14 +305,16 @@
       refresh();
     }
 
-    async function upload() {
+    async function upload(toast) {
       busy = true;
       note.textContent = "";
       refresh();
+      const sel = items.filter((i) => !i.done && i.checkbox.checked);
       const [target, time] = select.value.split(":");
       const okUrls = [];
+      if (toast) showToast(t("autoUploadToast", [String(sel.length)]));
 
-      for (const it of items.filter((i) => !i.done && i.checkbox.checked)) {
+      for (const it of sel) {
         it.checkbox.disabled = true;
         it.status.className = "status";
         it.status.textContent = t("uploading");
@@ -245,6 +332,7 @@
           it.done = true;
           it.failed = false;
           okUrls.push(resp.url);
+          if (toast) showToast(t("autoUploadToast", [String(sel.length - okUrls.length)]));
           it.status.className = "status ok";
           it.status.textContent = t("uploaded");
         } catch (e) {
@@ -263,6 +351,11 @@
       items.splice(0, items.length, ...items.filter((i) => !i.done));
 
       const allDone = items.length === 0;
+      const failedN = sel.filter((i) => i.failed).length;
+      if (toast) {
+        if (allDone && okUrls.length > 0) showToast(t("autoUploadDone", [String(okUrls.length)]), 5000);
+        else if (failedN > 0) showToast(t("autoUploadFailed", [String(failedN)]), 5000);
+      }
       if (allDone) close(); // 先關閉視窗,再把焦點交還輸入框後插入網址
       else refresh();
 
@@ -289,7 +382,7 @@
       items.forEach((i) => URL.revokeObjectURL(i.url));
       host.remove();
       modal = null;
-      const box = editor && editor.isConnected ? editor : document.querySelector(EDITOR_SELECTOR);
+      const box = editor && editor.isConnected ? editor : findEditor();
       box?.focus();
     }
 
@@ -299,6 +392,13 @@
     cancelBtn.focus(); // 預設焦點在「取消」,避免手滑按 Enter 就上傳
 
     modal = { addFiles };
+
+    // 跳過確認視窗:直接上傳,沿用 storage 裡記錄的選擇
+    if (settings.autoConfirm) {
+      host.remove();
+      modal = null;
+      upload(true);
+    }
   }
 
   // ---------- 攔截範圍 ----------
@@ -326,9 +426,29 @@
       });
   }
 
-  // Discord 是單頁應用程式,切換頻道時網址會變但腳本不會重載,
+  // ---------- Stoat 網址 ----------
+  // Stoat 路由（stoatchat/for-web 的 routing）：伺服器頁 /server/<ID>，
+  // 頻道頁 /server/<伺服器ID>/channel/<頻道ID>，私訊頁 /channel/<頻道ID>（無伺服器）
+  const STOAT_RE_SERVER = /\/server\/([A-Z\d]{26})/;
+  const STOAT_RE_CHANNEL = /\/channel\/([A-Z\d]{26})/;
+  const isStoatHost = (host) => host === "stoat.chat" || host.endsWith(".stoat.chat");
+  function parseStoatUrl(url) {
+    try {
+      const u = new URL(url);
+      if (!isStoatHost(u.hostname)) return null;
+      const server = u.pathname.match(STOAT_RE_SERVER);
+      const channel = u.pathname.match(STOAT_RE_CHANNEL);
+      if (!server && !channel) return null;
+      return { guildId: server?.[1] || null, channelId: channel?.[1] || null };
+    } catch {
+      return null;
+    }
+  }
+
+  // 這兩個平台都是單頁應用程式（或 Discord 是單頁）,切換頻道時網址會變但腳本不會重載,
   // 所以每次事件發生時都用當下的網址重新判斷,而不是啟動時判斷一次。
   function currentLocation() {
+    if (isStoatHost(location.hostname)) return parseStoatUrl(location.href);
     const m = location.pathname.match(/^\/channels\/([^/]+)(?:\/([^/]+))?/);
     // 必須有頻道 ID 才算訊息情境(例如 /channels/@me 好友頁就沒有)
     if (!m || !m[2]) return null;
@@ -354,7 +474,10 @@
 
   // ---------- 攔截 ----------
   const pickImages = (dt) => [...(dt?.files || [])].filter((f) => f.type.startsWith("image/"));
-  const editorFrom = (t) => (t instanceof Element ? t.closest(EDITOR_SELECTOR) : null) || document.querySelector(EDITOR_SELECTOR);
+  const editorFrom = (t) =>
+    (t instanceof Element ? t.closest(DISCORD_EDITOR_SELECTOR) : null) ||
+    (t instanceof Element ? t.closest(STOAT_EDITOR_SELECTOR) : null) ||
+    findEditor();
 
   function intercept(e, dt) {
     if (!inScope()) return; // 不在攔截範圍內:完全交給 Discord 處理

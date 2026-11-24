@@ -99,10 +99,22 @@ async function upload({ dataUrl, name, target }) {
   return url;
 }
 
+// 接受請求的來源：Discord 網頁版、Stoat 網頁版(stoat.chat 及其子網域)
+function isAllowedSenderUrl(url) {
+  if (typeof url !== "string") return false;
+  if (url.startsWith("https://discord.com/")) return true;
+  try {
+    const host = new URL(url).hostname;
+    return host === "stoat.chat" || host.endsWith(".stoat.chat");
+  } catch {
+    return false;
+  }
+}
+
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   if (msg?.type !== "upload") return;
   if (sender.id !== chrome.runtime.id) return;
-  if (!sender.url || !sender.url.startsWith("https://discord.com/")) return;
+  if (!isAllowedSenderUrl(sender.url)) return;
 
   upload(msg)
     .then((url) => sendResponse({ ok: true, url }))

@@ -18,7 +18,7 @@
 | 攔截範圍(伺服器 / 頻道 ID 與名稱) | 判斷哪些頻道要攔截圖片 | 瀏覽器 `chrome.storage.local` | 直到你修改或移除規則 |
 | 目前分頁的網址與標題 | 在彈出視窗顯示目前頻道並判斷範圍 | 只在記憶體中使用,不寫入儲存 | 切換分頁時 |
 
-本工具**不會**讀取你的 Discord 帳號資訊、訊息內容或瀏覽紀錄,也不會把上述資料回傳給開發者。
+本工具**不會**讀取你的 Discord/Stoat 帳號資訊、訊息內容或瀏覽紀錄,也不會把上述資料回傳給開發者。
 
 ## 第三方服務
 
@@ -27,7 +27,7 @@
 - **Uguu**(https://uguu.se):匿名圖床,檔案保存多久由 Uguu 決定;拿到網址的人都能看到圖片。
 - **ImgLink**(https://imglink.cc):需自行註冊;你提供的 API Key 會直接傳給 ImgLink 的 API。圖片預設是否公開、能否設為私密,由 ImgLink 決定,請自行在帳號後台設定。
 
-本工具與 Discord、Uguu、ImgLink 均無隸屬關係。這些服務各有自己的隱私權政策,請自行查閱。
+本工具與 Discord、Stoat、Uguu、ImgLink 均無隸屬關係。這些服務各有自己的隱私權政策,請自行查閱。
 
 ## 資料分享
 
@@ -36,7 +36,7 @@
 ## 權限說明
 
 - `storage`:保存上述本機設定與上傳紀錄。
-- `https://discord.com/*`:在 Discord 網頁版攔截貼上 / 拖曳的圖片,並把網址插回輸入框。
+- `https://discord.com/*`、`https://stoat.chat/*`、`https://*.stoat.chat/*`:在 Discord 或 Stoat 網頁版攔截貼上 / 拖曳的圖片,並把網址插回輸入框。
 - `https://uguu.se/*`、`https://imglink.cc/*`:把圖片傳到你選擇的圖床。
 
 ## 你的控制權
@@ -57,7 +57,7 @@ This extension is developed by Sid-1996. It has **no server of its own** and doe
 
 - **Images** are read locally only and uploaded, after your confirmation, to the image host you choose (Uguu or ImgLink). Anyone with the resulting URL can view the image.
 - **Upload history** (URL, filename, timestamp), **scope rules**, and an optional **ImgLink API Key** are stored only in your browser's `chrome.storage.local`. The API Key is used by the background script and is never sent to Discord. You can clear all of them in the options page.
-- The current tab URL/title is used in memory only to detect the active Discord channel.
-- We never read your Discord account data, message content, or browsing history, and we never send your data back to the developer.
-- Permissions: `storage` for local settings; Discord/Uguu/ImgLink host access for the features described above.
+- The current tab URL/title is used in memory only to detect the active Discord or Stoat channel.
+- We never read your Discord or Stoat account data, message content, or browsing history, and we never send your data back to the developer.
+- Permissions: `storage` for local settings; Discord/Stoat/Uguu/ImgLink host access for the features described above.
 - Contact: https://github.com/Sid-1996

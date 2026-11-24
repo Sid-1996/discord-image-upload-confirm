@@ -13,6 +13,8 @@
   "permissions": ["storage"],
   "host_permissions": [
     "https://discord.com/*",
+    "https://stoat.chat/*",
+    "https://*.stoat.chat/*",
     "https://uguu.se/*",
     "https://imglink.cc/*"
   ],
@@ -30,6 +32,11 @@
   "content_scripts": [
     {
       "matches": ["https://discord.com/*"],
+      "js": ["i18n.js", "content.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://stoat.chat/*", "https://*.stoat.chat/*"],
       "js": ["i18n.js", "content.js"],
       "run_at": "document_idle"
     }

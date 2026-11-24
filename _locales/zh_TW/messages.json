@@ -17,17 +17,50 @@
   "modeList": {
     "message": "只在下方清單中的頻道 / 伺服器攔截"
   },
+  "autoConfirmLabel": {
+    "message": "不再彈出確認視窗,直接使用上次選擇的圖床上傳"
+  },
+  "autoConfirmHint": {
+    "message": "開啟後在頻道 / 伺服器內貼上圖片會直接上傳,不再顯示確認視窗。"
+  },
+  "autoUploadToast": {
+    "message": "正在自動上傳圖片（共 $count$ 張）…",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "autoUploadDone": {
+    "message": "上傳完成，已取得 $count$ 張連結",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "autoUploadFailed": {
+    "message": "部分上傳失敗（$count$ 張）",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
   "modeAll": {
-    "message": "整個 Discord 都攔截"
+    "message": "整個 Discord / Stoat 都攔截"
   },
   "modeOff": {
-    "message": "全部停用(Discord 照常運作)"
+    "message": "全部停用(網站照常運作)"
   },
   "modeHint": {
     "message": "目前不是「只在清單中」模式,清單暫時不生效。"
   },
   "notDiscord": {
-    "message": "請在 Discord 網頁版的分頁中開啟這個視窗,才能把目前的頻道加入清單。"
+    "message": "請在 Discord 或 Stoat 網頁版的分頁中開啟這個視窗,才能把目前的頻道加入清單。"
   },
   "threadHint": {
     "message": "討論串與論壇貼文有自己的 ID,不會被「頻道」規則涵蓋;想涵蓋整個伺服器時,建議直接加入「整個伺服器」。"
@@ -45,7 +78,7 @@
     "message": "✗ 清單是空的,目前不會攔截任何地方;請用下面的按鈕加入這個頻道"
   },
   "statusNotBlocked": {
-    "message": "✗ 這個頁面不會攔截,Discord 照常處理"
+    "message": "✗ 這個頁面不會攔截,網站照常處理"
   },
   "addChannel": {
     "message": "將此頻道加入清單"
@@ -84,7 +117,7 @@
     "message": "使用前請先知道"
   },
   "warnUpload": {
-    "message": "圖片會被上傳到<strong>第三方圖床</strong>,不是 Discord。本擴充與這些服務沒有任何關係。"
+    "message": "圖片會被上傳到<strong>第三方圖店</strong>，不是 Discord 或 Stoat。本擴充與這些服務沒有任何關係。"
   },
   "warnPublic": {
     "message": "任何人只要拿到圖片網址就能看到圖片,請不要上傳不想讓別人看到的內容。"
@@ -96,7 +129,7 @@
     "message": "攔截範圍"
   },
   "scopeDesc": {
-    "message": "只有在你指定的頻道或伺服器裡,貼上或拖曳圖片才會被攔截;其他地方 Discord 照常運作。"
+    "message": "只有在你指定的頻道或伺服器裡,貼上或拖曳圖片才會被攔截;其他地方照常運作。"
   },
   "modeLabel": {
     "message": "模式"
@@ -108,13 +141,13 @@
     "message": "全部停用"
   },
   "emptyRules": {
-    "message": "清單是空的。到 Discord 頁面點工具列上的擴充圖示,就能把目前的頻道或伺服器加入清單。"
+    "message": "清單是空的。到 Discord 或 Stoat 頁面點工具列上的擴充圖示,就能把目前的頻道或伺服器加入清單。"
   },
   "addByUrlLabel": {
     "message": "用網址手動加入"
   },
   "urlPlaceholder": {
-    "message": "https://discord.com/channels/伺服器ID/頻道ID"
+    "message": "https://discord.com/channels/伺服器ID/頻道ID 或 https://stoat.chat/server/伺服器ID"
   },
   "addChannelShort": {
     "message": "加入此頻道"
@@ -123,7 +156,7 @@
     "message": "加入整個伺服器"
   },
   "urlHint": {
-    "message": "在 Discord 網頁版的網址列複製目前頻道的網址貼上即可。私訊的網址是 <code>/channels/@me/…</code>,加入「整個伺服器」代表所有私訊。<br />討論串與論壇貼文有自己的 ID,不會被「頻道」規則涵蓋;想涵蓋整個伺服器時,建議直接加入「整個伺服器」。"
+    "message": "在 Discord 或 Stoat 網頁版的網址列複製目前頻道的網址貼上即可。Stoat 的頻道網址如 <code>https://stoat.chat/server/伺服器ID/channel/頻道ID</code>。私訊的網址是 <code>/channels/@me/…</code>,加入「整個伺服器」代表所有私訊。<br />討論串與論壇貼文有自己的 ID,不會被「頻道」規則涵蓋;想涵蓋整個伺服器時,建議直接加入「整個伺服器」。"
   },
   "uguuHeading": {
     "message": "圖源 1:Uguu(不需要帳號)"
@@ -132,7 +165,7 @@
     "message": "匿名上傳,不需要註冊,也不用設定。"
   },
   "uguuTemp": {
-    "message": "檔案是<strong>臨時保存</strong>,多久刪除由 Uguu 決定,到期後 Discord 裡的圖片會失效。"
+    "message": "檔案是<strong>臨時保存</strong>,多久刪除由 Uguu 決定,到期後訊息裡的圖片會失效。"
   },
   "officialSite": {
     "message": "官網:"
@@ -213,7 +246,7 @@
     "message": "已加入清單"
   },
   "badUrl": {
-    "message": "無法辨識網址,請貼上 https://discord.com/channels/… 這樣的網址"
+    "message": "無法辨識網址,請貼上 https://discord.com/channels/… 或 https://stoat.chat/server/… 這樣的網址"
   },
   "noChannelInUrl": {
     "message": "這個網址只有伺服器,沒有頻道;請改用「加入整個伺服器」"

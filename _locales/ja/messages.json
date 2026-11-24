@@ -17,17 +17,50 @@
   "modeList": {
     "message": "下のリストにあるチャンネル / サーバーのみ対象"
   },
+  "autoConfirmLabel": {
+    "message": "確認ウィンドウをスキップし、直近の選択でアップロード"
+  },
+  "autoConfirmHint": {
+    "message": "オンにするとチャンネル／サーバーでの画像貼り付けが確認ウィンドウなしでそのままアップロードされます。"
+  },
+  "autoUploadToast": {
+    "message": "自動アップロード中（合計 $count$ 枚）…",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "autoUploadDone": {
+    "message": "アップロード完了、$count$ 件のリンクを取得",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "autoUploadFailed": {
+    "message": "一部のアップロードに失敗しました（$count$ 枚）",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
   "modeAll": {
-    "message": "Discord 全体を対象にする"
+    "message": "Discord・Stoat 全体を対象にする"
   },
   "modeOff": {
-    "message": "すべて無効（Discord は通常どおり動作）"
+    "message": "すべて無効（サイトは通常どおり動作）"
   },
   "modeHint": {
     "message": "現在「リストのみ」モードではないため、リストは適用されません。"
   },
   "notDiscord": {
-    "message": "現在のチャンネルをリストに追加するには、Discord のタブでこのウィンドウを開いてください。"
+    "message": "現在のチャンネルをリストに追加するには、Discord または Stoat のタブでこのウィンドウを開いてください。"
   },
   "threadHint": {
     "message": "スレッドとフォーラム投稿には固有の ID があり、「チャンネル」ルールには含まれません。サーバー全体を対象にする場合は「サーバー全体」を追加してください。"
@@ -45,7 +78,7 @@
     "message": "✗ リストが空のため、現在どこも対象ではありません。下のボタンでこのチャンネルを追加してください"
   },
   "statusNotBlocked": {
-    "message": "✗ このページの画像は対象外で、Discord が通常どおり処理します"
+    "message": "✗ このページの画像は対象外で、サイトが通常どおり処理します"
   },
   "addChannel": {
     "message": "このチャンネルをリストに追加"
@@ -84,7 +117,7 @@
     "message": "はじめる前に"
   },
   "warnUpload": {
-    "message": "画像は Discord ではなく<strong>サードパーティの画像ホスト</strong>にアップロードされます。本拡張はこれらのサービスと一切関係ありません。"
+    "message": "画像は Discord・Stoat いずれでもない<strong>サードパーティの画像ホスト</strong>へアップロードされます。本拡張はこれらのサービスと一切関係ありません。"
   },
   "warnPublic": {
     "message": "画像の URL を知っている人は誰でも画像を見られます。見せたくないものはアップロードしないでください。"
@@ -96,7 +129,7 @@
     "message": "対象範囲"
   },
   "scopeDesc": {
-    "message": "指定したチャンネルやサーバーで画像を貼り付け・ドラッグしたときだけ対象となり、それ以外は Discord が通常どおり動作します。"
+    "message": "指定したチャンネルやサーバーで画像を貼り付け・ドラッグしたときだけ対象となり、それ以外はサイトが通常どおり動作します。"
   },
   "modeLabel": {
     "message": "モード"
@@ -108,13 +141,13 @@
     "message": "すべて無効"
   },
   "emptyRules": {
-    "message": "リストが空です。Discord のページでツールバーの拡張アイコンを押すと、現在のチャンネルやサーバーを追加できます。"
+    "message": "リストが空です。Discord または Stoat のページでツールバーの拡張アイコンを押すと、現在のチャンネルやサーバーを追加できます。"
   },
   "addByUrlLabel": {
     "message": "URL で手動追加"
   },
   "urlPlaceholder": {
-    "message": "https://discord.com/channels/サーバーID/チャンネルID"
+    "message": "https://discord.com/channels/サーバーID/チャンネルID または https://stoat.chat/server/サーバーID"
   },
   "addChannelShort": {
     "message": "このチャンネルを追加"
@@ -123,7 +156,7 @@
     "message": "サーバー全体を追加"
   },
   "urlHint": {
-    "message": "Discord のアドレスバーから現在のチャンネルの URL をコピーして貼り付けてください。DM の URL は <code>/channels/@me/…</code> で、「サーバー全体」を追加するとすべての DM が対象になります。<br />スレッドとフォーラム投稿には固有の ID があり、「チャンネル」ルールには含まれません。サーバー全体を対象にする場合は「サーバー全体」を追加してください。"
+    "message": "Discord または Stoat のアドレスバーから現在のチャンネルの URL をコピーして貼り付けてください。Stoat のチャンネル URL は <code>https://stoat.chat/server/サーバーID/channel/チャンネルID</code> のような形です。DM の URL は <code>/channels/@me/…</code> で、「サーバー全体」を追加するとすべての DM が対象になります。<br />スレッドとフォーラム投稿には固有の ID があり、「チャンネル」ルールには含まれません。サーバー全体を対象にする場合は「サーバー全体」を追加してください。"
   },
   "uguuHeading": {
     "message": "画像ソース 1: Uguu（アカウント不要）"
@@ -132,7 +165,7 @@
     "message": "匿名アップロードで、登録や設定は不要です。"
   },
   "uguuTemp": {
-    "message": "ファイルは<strong>一時保存</strong>され、保存期間は Uguu が決めます。期限切れになると Discord の画像が表示されなくなります。"
+    "message": "ファイルは<strong>一時保存</strong>され、保存期間は Uguu が決めます。期限切れになるとメッセージの画像が表示されなくなります。"
   },
   "officialSite": {
     "message": "公式サイト:"
@@ -213,7 +246,7 @@
     "message": "リストに追加しました"
   },
   "badUrl": {
-    "message": "URL を認識できません。https://discord.com/channels/… のような URL を貼り付けてください。"
+    "message": "URL を認識できません。https://discord.com/channels/… や https://stoat.chat/server/… のような URL を貼り付けてください。"
   },
   "noChannelInUrl": {
     "message": "この URL にはサーバーしかなくチャンネルがありません。「サーバー全体を追加」を使用してください。"
