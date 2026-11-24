@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "default_locale": "zh_TW",
   "name": "__MSG_extName__",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Sid-1996",
   "description": "__MSG_extDesc__",
   "icons": {
